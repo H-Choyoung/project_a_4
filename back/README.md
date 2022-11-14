@@ -1,2 +1,3 @@
-- 가상환경 venv 사용
-- 추가 dependency 있을 시 상의
+-   가상환경 venv 사용
+-   추가 dependency 있을 시 상의
+    -Python 3.10
