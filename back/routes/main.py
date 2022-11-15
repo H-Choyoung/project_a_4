@@ -10,6 +10,3 @@ def save():
 
 
 
-@api.route('/test')
-def save():
-    return "main"

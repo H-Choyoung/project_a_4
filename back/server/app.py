@@ -1,9 +1,8 @@
-from flask import Flask, Blueprint, jsonify
-# from routes import main
-# import os
-# import dotenv
-# from config import db
+from flask import Blueprint, Flask, jsonify
+from ..routes import main
 
+
+# print(main,"ggg")
 
 app = Flask(__name__)
 
@@ -24,5 +23,7 @@ def hello_world():
 #     sql      = "SELECT * FROM kospi_005930_d WHERE day BETWEEN '2000-10-05' AND '2000-10-20';"
 #     row      = db_class.executeAll(sql)
 #     return jsonify(row)
+
+
 
     
