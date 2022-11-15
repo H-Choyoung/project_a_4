@@ -1,22 +1,18 @@
 import React from 'react';
 import './components/css/App.css';
+import Article from 'components/screens/Article';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="root">
+      <div className='main'></div>
+      <div className='newsBg'>
+        <p className='title'>최근뉴스</p>
+        <div className='articleContainer'>
+          <Article/>
+        </div>
+      </div>
+
     </div>
   );
 }

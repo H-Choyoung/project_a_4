@@ -13,22 +13,10 @@
   width: 30vw;
   height: 100%;
   background-color: #292929;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .title {
   color: white;
   margin-left: 72px;
   margin-top: 119px;
   font-weight: 700;
-}
-.articleContainer {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  /* display: flex; */
-  /* flex-direction: column; */
-  overflow: scroll;
-  justify-content: center;
 }

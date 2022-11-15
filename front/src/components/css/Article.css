@@ -1,0 +1,7 @@
+.articlebox {
+  width: 495px;
+  height: 295px;
+  background-color: salmon;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
