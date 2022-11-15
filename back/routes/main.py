@@ -1,12 +1,11 @@
-from flask import Blueprint
+# from flask import Blueprint
+# # from config import db
 
 
-api = Blueprint('main', __name__, url_prefix='/main')
+# api = Blueprint('main', __name__,url_prefix='/main')
 
 
-@api.route('/')
-def save():
-    return "main"
-
-
+# @api.route('/', methods=["GET"])
+# def request_Data():
+#     return "test"
 
