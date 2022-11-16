@@ -2,10 +2,10 @@ from flask import Blueprint
 # from config import db
 
 
-api = Blueprint('search', __name__, url_prefix = '/search')
+api = Blueprint('search', __name__, url_prefix = '/')
 
 
-@api.route('/', methods=["GET"])
+@api.route('/search', methods=["GET"])
 def request_Data():
-    return "good hihhihihhi"
+    return "search"
 

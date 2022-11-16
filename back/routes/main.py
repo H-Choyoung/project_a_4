@@ -2,10 +2,10 @@
 # # from config import db
 
 
-# api = Blueprint('main', __name__,url_prefix='/main')
+# api = Blueprint('main', __name__, url_prefix='/')
 
 
-# @api.route('/', methods=["GET"])
+# @api.route('/main1', methods=["GET"])
 # def request_Data():
-#     return "test"
+#     return "main"
 
