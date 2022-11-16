@@ -13,6 +13,8 @@
   width: 30vw;
   height: 100%;
   background-color: #292929;
+  display: flex;
+  justify-content: center;
 }
 .title {
   color: white;

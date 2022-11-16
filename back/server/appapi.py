@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request
+from flask import Flask
+from flask_cors import CORS
 import requests
+
 
 client_id = "_85wvqThYJUdir8dWo5o"
 client_secret = "gmaG1XD16B"
 serch_word = '삼성전자'
 encode_tpye = 'json' 
-max_display = 10
+max_display = 30
 sort = 'sim' #sim 관련도 date 시간순
 start = 1
 
@@ -17,8 +19,9 @@ headers = {
 }
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route('/main')
+@app.route('/')
 def home():
   return "homepage"
 

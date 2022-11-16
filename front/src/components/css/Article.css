@@ -1,7 +1,10 @@
 .articlebox {
-  width: 495px;
+  width: 456px;
   height: 295px;
-  background-color: salmon;
+  background-color: #ccc;
   margin-bottom: 40px;
   border-radius: 10px;
 }
+/* .articlebox::-webkit-scrollbar {
+	display:none;
+} */

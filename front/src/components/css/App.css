@@ -1,34 +1,19 @@
 .root {
   width: 100vw;
   height: 100vh;
-  background-color: black;
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
 }
-.main {
-  width: 70vw;
-  height: 100%;
-}
-.newsBg {
-  width: 30vw;
-  height: 100%;
+.root > :last-child {
+  width: 600px;
+  height: inherit;
   background-color: #292929;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 .title {
   color: white;
-  margin-left: 72px;
-  margin-top: 119px;
-  font-weight: 700;
-}
-.articleContainer {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  /* display: flex; */
-  /* flex-direction: column; */
-  overflow: scroll;
-  justify-content: center;
+  /* position: absolute; */
+  /* top: 119px; */
 }
