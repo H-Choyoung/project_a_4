@@ -26,6 +26,7 @@ function App() {
       console.log("feach datas!!") 
       setData(res.data); // useState 변수에 담긴다
       //  console.log(Data)
+      console.log("hi")
 
     } catch(e){
       console.log(e)
