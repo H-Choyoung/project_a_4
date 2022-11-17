@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./components/css/App.css";
+import Props from "./props";
 
 interface Ko {
     code: string;
@@ -13,7 +14,7 @@ interface Ko {
     startday: string;
 }
 
-interface Data {
+export interface Data {
     kosdak: Ko[];
     kospi: Ko[];
 }
@@ -55,9 +56,14 @@ function App() {
 
             <div>
                 {count.kospi.map((el: Ko, i: number) => {
-                    return <p key={i}>{el.name}</p>;
+                    return (
+                        <p key={i} onClick={() => kosdakClick(el)}>
+                            {el.name}
+                        </p>
+                    );
                 })}
             </div>
+            <Props data={count} />
         </div>
     );
 }

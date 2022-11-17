@@ -3,9 +3,10 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from flask import Flask, jsonify, json, request
 from config import db
 from flask_cors import CORS
-from urllib.parse import parse_qs
-
+from urllib.parse import parse_qs, urlencode
 from routes import search, main
+import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -45,11 +46,36 @@ def request_Data():
 
 @app.route('/detail', methods=["GET"])
 def get_URl():
-    print()
-    print(parse_qs(request.query_string)) 
+
+    market = request.args.get('market')
+    code = request.args.get('code')
+    db_class = db.Database()
+    sql = f'SELECT * FROM {market}_{code}_d'
+    row = db_class.executeAll(sql)
+
+    frame = pd.DataFrame(row)
+    # print(frame)
+
+    # day = frame.read_json['day'].to_json(orient='records')
+    day = frame.get('day')
+    volume = frame.get('volume')
+
+   
+
+    data = {
+        "day":day,
+        "volume":volume,
+    }
     
 
-    return "test"
+    response = app.response_class (
+        response = json.dumps(row),
+        status=200,
+        mimetype='application/json'
+    )
+
+
+    return response
 
 # @app.route('/test', methods=["GET"])
 # def request_Data1():
