@@ -13,6 +13,7 @@ from db import db
 # from routes.table_query import getList
 from routes.get_code_query import getCodes
 # from routes.codes import codeList
+from routes.get_api import getApi
 
 
 app = Flask(__name__)
@@ -32,7 +33,7 @@ def table_get():
     # return getList()
     newArr = []
     db_class = db.Database()
-    for codes in getCodes():
+    for codes in getCodes('KOSPI'):
         sql = """
         SELECT T1.code, T1.name, T2.close, T2.day
         FROM companylist T1
@@ -51,7 +52,7 @@ def table_get():
 def table_get2():
     newArr2 = []
     db_class2 = db.Database()
-    for codes in getCodes():
+    for codes in getCodes('KOSPI'):
         sql2 = """
         SELECT T1.code, T1.name, T2.close, T2.day
         FROM companylist T1
@@ -65,10 +66,30 @@ def table_get2():
     # print(newArr)
     return newArr2
 
+
+
+
+app.run(debug=True)
+
+
 # print(getList());
 # @app.route('/user/<user_name>/<int:user_id>')
 # def user(user_name, user_id):
 #     return f'Welcome, {user_name}({user_id})'
-
-
-app.run(debug=True)
+# ------------------------------------------------
+# 테이블에 공통키 심기용 함수(사용 끝났으므로 실행하지 말것)
+# @app.route('/addColumn', methods=['GET'])
+# def get():
+#     newArr3 = []
+#     db_class3 = db.Database()
+#     for codes in getCodes('kosdak'):
+#         sql3 = f"""
+#             ALTER TABLE kosdak_{codes}_m 
+#             ADD code
+#             VARCHAR(15) DEFAULT "{codes}"
+#             """
+#         # print(sql2)
+#         row3 = db_class3.executeAll(sql3)
+#         newArr3.append(row3)
+#     # print(newArr)
+#     return newArr3
