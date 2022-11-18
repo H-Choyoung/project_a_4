@@ -3,7 +3,7 @@ import '../css/Article.css'
 import { Item } from 'App'
 import { RootObject } from 'App'
 
-const Article = ({data} : {data:RootObject}) : any => {
+const ArticleNew = ({data} : {data:RootObject}) : any => {
   console.log(data.items)
   let articlebox = data.items
 
@@ -23,4 +23,4 @@ const Article = ({data} : {data:RootObject}) : any => {
   return article  
 }
 
-export default Article
+export default ArticleNew
