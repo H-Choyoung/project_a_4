@@ -27,7 +27,11 @@ function App() {
     });
 
     const kosdakClick = (ko: Ko) => {
-        navigate(`/detail?market=${ko.market.toLowerCase()}&code=${ko.code}`);
+        navigate(
+            `/detail?market=${ko.market.toLowerCase()}&code=${
+                ko.code
+            }&company=${ko.name}`
+        );
     };
 
     useEffect(() => {
@@ -63,7 +67,6 @@ function App() {
                     );
                 })}
             </div>
-            <Props data={count} />
         </div>
     );
 }

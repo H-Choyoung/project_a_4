@@ -50,37 +50,29 @@ def get_URl():
     market = request.args.get('market')
     code = request.args.get('code')
     db_class = db.Database()
-    sql = f'SELECT * FROM {market}_{code}_d'
+    sql = f'SELECT day, open, high, low, close FROM {market}_{code}_d'
     row = db_class.executeAll(sql)
 
     frame = pd.DataFrame(row)
-    # print(frame)
+    data = []
 
-    # day = frame.read_json['day'].to_json(orient='records')
-    day = frame.get('day')
-    volume = frame.get('volume')
-
+    for index, row1 in list(frame.iterrows()):
+        data.append([row1['day'], row1['open'],row1['high'],row1['low'],row1['close']])
    
-
-    data = {
-        "day":day,
-        "volume":volume,
-    }
-    
-
     response = app.response_class (
-        response = json.dumps(row),
+        response = json.dumps(data),
         status=200,
         mimetype='application/json'
     )
-
-
     return response
 
-# @app.route('/test', methods=["GET"])
-# def request_Data1():
 
-#     return "test"
+
+
+
+
+    
+
 
 
 # @app.route("/search", methods=["GET"])

@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import ReactApexChart from "react-apexcharts";
 import "./components/css/detail.css";
 import { Data } from "App";
-import { ApexOptions } from "apexcharts";
 
-const Props = ({ data }: { data: Data }) => {
-    console.log(data);
-    return <div className="detail"></div>;
-};
+const Props = () =>
+    // { data }: { data: Data }
+
+    {
+        // console.log(data);
+        return (
+            <div>
+                <form
+                    method="get"
+                    onSubmit={async (e) => {
+                        e.preventDefault();
+                        const test: any = await axios.get<Object>(
+                            "http://localhost:8080/test"
+                        );
+                        console.log(test);
+                    }}
+                >
+                    <input type="text" />
+                    <button>전송</button>
+                </form>
+            </div>
+        );
+    };
 
 export default Props;

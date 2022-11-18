@@ -1,14 +1,48 @@
 .detail {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.section {
+    width: 70%;
+    height: auto;
+}
+
 .chart {
-    width: 80%;
-    height: 500px;
+    width: 100%;
+    height: auto;
+}
+.btn_wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.btn {
+    width: 80px;
+    height: 25px;
+    border-radius: 8px;
+    border: 1px solid #4181ff;
+    background-color: #4181ff;
+    color: white;
+    cursor: pointer;
+}
+.btn:first-child {
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #4181ff;
+    transition: 0.2s;
+}
+
+.info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 /* .apexcharts-legend-series {
