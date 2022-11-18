@@ -1,10 +1,11 @@
 import pymysql
-from get_code_query import getCodes
+from routes.get_code_query import getCodes
 import numpy as np
 import pandas as pd
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', None)
 
+# 테이블용 데이터 쿼리 함수
 def getRates(): 
     # *DB connect
     conn = pymysql.connect(host='127.0.0.1', user='root',
@@ -13,27 +14,27 @@ def getRates():
         lists = list()
         for code in getCodes('KOSPI'):
             qr = f"""
-            SELECT A.code, A.day AS'날짜', A.close AS'종가', A.close-A.close2 AS'등락가', (A.close-A.close2)/A.close2*100 AS'등락율'
+            SELECT B.name, A.code, A.day AS'날짜', A.close AS'종가', A.close-A.close2 AS'등락가', (A.close-A.close2)/A.close2*100 AS'등락율'
             FROM (
-                SELECT day, close,
+                SELECT code, day, close,
                 IFNULL(LAG(close,1)over(ORDER BY day desc),0) AS close2
                 FROM kospi_{code}_m
             ) 
             AS A,companylist B
             WHERE A.code=B.code
-            ORDER BY A.day;
+            LIMIT 2
             """
             curs = conn.cursor(pymysql.cursors.DictCursor)
             curs.execute(qr)
             rows = curs.fetchall()
             lists.append(rows)
-        print(lists)
+        # print(lists)
         return lists
     
     finally:
         conn.close()
 
-getRates()
+# getRates()
 
 def pdTable():
 #    pdTest = pd.Series(getRates(),index=getCodes('kospi'))

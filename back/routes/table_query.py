@@ -1,8 +1,8 @@
 import pymysql
+from db import db
 from routes.get_code_query import getCodes
 # 메인 출력용 테이블 쿼리
 # 종목명/등락율(전일or전달 기준)/등락가(이번달종가-전달종가)/현재가격(종가)
-# 코스피/코스닥 별도? 
 
 def getList():
     # *DB connect
@@ -18,7 +18,6 @@ def getList():
           INNER JOIN kospi_""" + codes + """_m T2
           WHERE T1.code='""" + codes + """'
           AND T2.day ='2022-02-03'
-          ORDER BY T2.close
           """
           # print(sql)
           curs.execute(sql)

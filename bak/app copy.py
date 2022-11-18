@@ -24,9 +24,49 @@ def table():
     return 'test'
 
 # db GET
-@app.route('/table_rate_m_kospi', methods=['GET'])
+@app.route('/table_220203_m', methods=['GET'])
 # view 함수
-def get_kospi():
+def table_get():
+    # return getList()
+    newArr = []
+    db_class = db.Database()
+    for codes in getCodes('KOSPI'):
+        sql = """
+        SELECT T1.code, T1.name, T2.close, T2.day
+        FROM companylist T1
+        INNER JOIN kospi_""" + str(codes) + """_m T2
+        WHERE T1.code='""" + str(codes) + """'
+        AND T2.day ='2022-02-03'
+        """
+        # print(sql2)
+        row = db_class.executeAll(sql)
+        newArr.append(row)
+    # print(newArr)
+    return newArr
+
+@app.route('/table_220103_m', methods=['GET'])
+# view 함수
+def table_get2():
+    newArr2 = []
+    db_class2 = db.Database()
+    for codes in getCodes('KOSPI'):
+        sql2 = """
+        SELECT T1.code, T1.name, T2.close, T2.day
+        FROM companylist T1
+        INNER JOIN kospi_""" + str(codes) + """_m T2
+        WHERE T1.code='""" + str(codes) + """'
+        AND T2.day ='2022-01-03'
+        """
+        # print(sql2)
+        row2 = db_class2.executeAll(sql2)
+        newArr2.append(row2)
+    # print(newArr)
+    return newArr2
+
+
+@app.route('/table_all_m', methods=['GET'])
+# view 함수
+def table_get3():
     newArr3 = list()
     db_class3 = db.Database()
     for code in getCodes('KOSPI'):
@@ -48,29 +88,7 @@ def get_kospi():
     # print(newArr)
     return newArr3
 
-@app.route('/table_rate_m_kosdaq', methods=['GET'])
-# view 함수
-def get_kosdaq():
-    newArr_dak = list()
-    db_class_dak = db.Database()
-    for code in getCodes('kosdak'):
-        sql_dak = f"""
-        SELECT B.name, A.code, A.day AS'날짜', A.close AS'종가', A.close-A.close2 AS'등락가', (A.close-A.close2)/A.close2*100 AS'등락율'
-        FROM (
-            SELECT code, day, close,
-            IFNULL(LAG(close,1)over(ORDER BY day desc),0) AS close2
-            FROM kosdak_{code}_m
-            LIMIT 2
-        ) 
-        AS A,companylist B
-        WHERE A.code=B.code
-        ORDER BY B.name
-        LIMIT 2
-        """
-        row_dak = db_class_dak.executeAll(sql_dak)
-        newArr_dak.append(row_dak)
-    # print(newArr)
-    return newArr_dak
+
 
 app.run(debug=True)
 
