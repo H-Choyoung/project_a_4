@@ -1,8 +1,9 @@
 import{ Routes,Route,Link} from "react-router-dom";
 import './components/css/App.css';
 import SearchBar from './components/pages/search';
-import DrawTable from './components/pages/getTable' 
-import React ,{useEffect,useState} from "react";
+import DrawTable from './components/pages/getTable'; 
+import React ,{useEffect,useState} from "react"; 
+
 
 import axios from 'axios';
 import { count } from "console";
@@ -98,6 +99,7 @@ function App() {
           <Routes>
           <Route path='/getTable' element={<DrawTable/>}></Route>
           </Routes>   
+         
       </div>
     </div>
   );
