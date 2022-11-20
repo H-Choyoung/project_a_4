@@ -13,7 +13,18 @@ const SearchBar = () =>{
     // alert(txValue);
     // let name:string = txValue;
     console.log(txValue)
-    }; 
+    };  
+    
+    const url ="http://localhost:5000 "
+    function submit(e: any){
+        e.preventDefault(); 
+        axios.post(url,{
+            company: txValue
+
+        }).then(res :any => {
+            console.log(res.txValue)
+        })
+    }
     
     //⭐feach방식으로 post
 //     const sendValue = () => {
@@ -54,13 +65,13 @@ const SearchBar = () =>{
     return ( 
  
       <div className="header">
-        <form>
-      <input type="submit" className="iptSearch" id="keyword" value={txValue} onChange={onInput}/>
-      <button type="button" className="search" onClick={onclick} >
+        <form onSubmit={(e) =>submit(e)}>
+      <input className="iptSearch" id="keyword" value={txValue} onChange={onInput}/>
+      <button className="search" onClick={onclick} >
           <span>검색</span>
       </button>
       </form>
-      <p>{txValue}</p>
+      {/* <p>{txValue}</p> */}
   </div>
  
       );
