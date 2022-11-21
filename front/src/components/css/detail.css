@@ -1,93 +1,138 @@
 .detail {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #000000;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #000000;
 }
 
 .section {
-    width: 70%;
-    height: auto;
+  width: 70%;
+  height: auto;
 }
 
 .wrapArrow {
-    color: white;
-    font-weight: 700;
-    font-size: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 15px 0;
+  color: white;
+  font-weight: 700;
+  font-size: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 15px 0;
 }
 
 .wrapArrow > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapArrow > div > p {
-    margin: 10px 0 10px 15px;
+  margin: 10px 0 10px 15px;
+}
+
+.search {
+  outline: none;
+  background: #000000;
+  border: 3px solid #ffffff;
+  border-radius: 68.5px;
+  padding: 5px 10px;
+}
+
+.search > input {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
 }
 
 .chart {
-    width: 100%;
-    height: auto;
-    background-color: #1e1e1e;
+  width: 100%;
+  height: auto;
+  background-color: #1e1e1e;
 }
 
 .btn_wrap {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .btn {
-    width: 80px;
-    height: 25px;
-    border-radius: 8px;
-    border: 1px solid #4181ff;
-    background-color: #4181ff;
-    color: white;
-    cursor: pointer;
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #4181ff;
+  background-color: #4181ff;
+  color: white;
+  cursor: pointer;
 }
 .btn:first-child {
-    margin: 10px;
+  margin: 10px;
 }
 
 .btn:hover {
-    background-color: white;
-    color: #4181ff;
-    transition: 0.2s;
+  background-color: white;
+  color: #4181ff;
+  transition: 0.2s;
 }
 
 .info {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: white;
-    height: 90px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
+  padding: 25px;
+}
+
+.info > div > label {
+  margin: 0 24px 0 0;
+}
+
+.info > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px 0 0;
+  font-size: 20px;
 }
 
 .recommend {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .recommend > button {
-    width: 334px;
-    height: 84px;
-    left: 886px;
-    top: 903px;
-    font-size: 25px;
-    font-weight: 700;
-    background: #ff7676;
-    color: white;
-    border-radius: 71.5px 0px 71.5px 10px;
+  width: 334px;
+  height: 84px;
+  left: 886px;
+  top: 903px;
+  font-size: 25px;
+  font-weight: 700;
+  background: #ff7676;
+  color: white;
+  border-radius: 71.5px 0px 71.5px 10px;
+  cursor: pointer;
 }
 
+.recommend > button:hover {
+  background-color: white;
+  color: #ff7676;
+  transition: 0.3s;
+}
+
+.font_size_18 {
+  font-size: 18px;
+}
+
+.font_color_red {
+  color: #ff0000;
+}
+.font_weight_700 {
+  font-weight: 700;
+}
 /* .apexcharts-legend-series {
     display: flex;
     align-items: center;
