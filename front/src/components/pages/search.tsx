@@ -1,6 +1,7 @@
 import axios, { Axios } from "axios";
 import { stringify } from "querystring";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { getAllJSDocTags } from "typescript";
 
 interface value{
     company: string;
@@ -19,48 +20,51 @@ const SearchBar = () =>{
     // let name:string = txValue;
      console.log(txValue)
     };  
+ 
     
-    const url ="http://localhost:5000/value "
-   async function submit(e: any){
-        console.log(e)
-         e.preventDefault(); 
-       await axios.get( `localhost:5000/value/${txValue}`
-        ).then(response => {
-            console.log(response)
+
+
+
+  //axios 
+//    async function submit(e: any){
+//         console.log("하이")
+//           e.preventDefault(); 
+//        await axios.get( `localhost:5000/value/${txValue}`
+//         ).then(response => {
+//             console.log(response)
+//             console.log(txValue)
+//         })
+//     }
+    
+interface a{
+    company: ""
+}
+  const sendForm = async(e: React.FormEvent<HTMLFormElement>)=> {
+
+    e.preventDefault()
+
+    const {keyword} = e.target as typeof e.target &{
+        keyword:{value: string}
+    } 
+      
+    console.log(keyword.value)
+    
+   const getData = await fetch('http://127.0.0.1:5000/value',{ 
+        headers:{
+            'Content-Type':'application/json'
+        },
+        method:'POST',
+        body:JSON.stringify({
+            company:keyword.value
+            
         })
-    }
+    })
     
-    //⭐feach방식으로 post
-//     const sendValue = () => {
-//     console.log("하이하이")
-//     fetch('http://127.0.0.1:5000/value',{
-//         method:"POST", 
-//         headers:{
-//             "Content-Type":"application/json"
-//         },
-//         body:JSON.stringify({ 
-//             txValue
-//         }),
-        
-//     }).then(res => {
-//         if(res.ok){
-//             alert("생성이 완료되었습니다")
-//         }
-//     })
+    console.log(getData)
 
-//   }
-//   sendValue()
-
-    //⭐xios 방식으로 post 
-        // console.log("바이") 
-        // axios.post('http://127.0.0.1:5000/value',{
-        //      txValue
-        // }).then(function (respose){
-        //   console.log("보냄");
-        // }).catch(function name(error) {
-        //     console.log(error)
-        // })
+   
     
+  }
 
     
 
@@ -69,7 +73,7 @@ const SearchBar = () =>{
     return ( 
  
       <div className="header">
-        <form onSubmit={(e) =>submit(e)}>
+        <form onSubmit={(e) =>sendForm(e)}>
       <input className="iptSearch" id="keyword" value ={txValue} onChange={onInput}/>
       <button className="search" onClick={onclick} >
            <span>검색</span> 

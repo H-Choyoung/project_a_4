@@ -32,12 +32,11 @@ function App() {
     } catch(e){
       console.log(e)
     }
+    fatchDatas();
   }; 
   
 
-  useEffect(() => {
-   fatchDatas();
-  }, []);
+
 
    console.log(Data)
   // const test = Data;
