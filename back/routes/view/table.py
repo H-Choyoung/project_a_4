@@ -33,7 +33,7 @@ def kosdaq_data():
     db_class_dak = db.Database()
     for code in getCodes('kosdak'):
         sql_dak = f"""
-        SELECT B.name, A.code, A.day AS'날짜', A.close AS'종가', A.close-A.close2 AS'등락가', (A.close-A.close2)/A.close2*100 AS'등락율'
+        SELECT B.name AS'종목명', A.code, A.day AS'날짜', A.close AS'종가', A.close-A.close2 AS'등락가', (A.close-A.close2)/A.close2*100 AS'등락율'
         FROM (
             SELECT code, day, close,
             IFNULL(LAG(close,1)over(ORDER BY day desc),0) AS close2
