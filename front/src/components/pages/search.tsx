@@ -21,13 +21,10 @@ const SearchBar = () =>{
     };  
     
     const url ="http://localhost:5000/value "
-    function submit(e: any){
+   async function submit(e: any){
         console.log(e)
          e.preventDefault(); 
-        axios.get( `localhost:5000/value/${txValue}`
-            
-       
-        //    company: object = txValue.company
+       await axios.get( `localhost:5000/value/${txValue}`
         ).then(response => {
             console.log(response)
         })
