@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { idText } from "typescript";
+import "./components/css/table.css";
 
 interface Ko {
   'code': string;
@@ -12,9 +13,9 @@ interface Ko {
   // item : string
 }
 
-
 function App() {
-  const [dbData, setDbData] = useState([]);
+  const [kospiData, setKospiData] = useState([]);
+  const [kosdaqData, setKosdaqData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -24,10 +25,16 @@ function App() {
       //요청 초기화
       setError(null);
       setLoading(true);
-      // setDbData([]);
+      setKospiData([]);
+
       //서버 접속 후 DB연결
-      const res:any = await axios.get<Object>("http://127.0.0.1:5000/table_rate_m_kospi"); 
-      setDbData(res.data);
+      // kospi
+      const kospiRes:any = await axios.get<Object>("http://127.0.0.1:8080/table_data_kospi"); 
+      setKospiData(kospiRes.data);
+      // kosdaq
+      const kosdaqRes:any = await axios.get<Object>("http://127.0.0.1:8080/table_data_kosdaq"); 
+      setKosdaqData(kosdaqRes.data);
+
       console.log("fetch datas");
     } catch (e) {
       setError(e);
@@ -39,42 +46,53 @@ function App() {
     FetchDatas();
   }, []);
 
-  const datas = dbData.map<Ko>(item => {
-    // console.log(item.code)
-    return item[0]
-  });
-  // console.log(datas)
-  // console.log(datas[0]['날짜'])
 
-  const datas2 = dbData.map<Ko>(item => item[0]).map(item => {
-    return item.code
+  const datas2 = kosdaqData.map<Ko>(item => item[0]).map(item => {
+    return item['종목명']
   })
-  console.log(datas2)
-
-
-  // const datas2 = datas.map((item, idx) => {
-  //   console.log(item.code)
-  //   console.log(idx)
-  //   // return item.code
-  // });
   // console.log(datas2)
-
-
-
-
   return (
-    <div className="App">
-        {/* {datas.filter((item:Ko, idx:number) => {
-          if(item['날짜'] === "Mon, 03 Jan 2022 00:00:00 GMT"){
-            return (
-              <p key={idx}> {item.code} </p>
-            )}}
-          )}; */}
-        { dbData.map<Ko>(item => item[0]).map(item => {
-          return (
-            <p>{item['종목명']}</p>
-          )
-        })}
+    <div id="section">
+      <div className="tables">
+        <div className="kospiSection">
+          <div className="marketName">
+          <h3>KOSPI</h3>
+          </div>
+            <div className="rows">
+              <span>1</span>
+              <span>종목명</span>
+              <span>등락가</span>
+              <span>등락율</span>
+              <span>현재가격</span>
+            </div>
+        </div>
+        <div className="kosdaqSection">
+          <div className="marketName">
+          <h3>KOSDAQ</h3>
+          </div>
+            <div className="rows">
+              <span>1</span>
+              <span>종목명</span>
+              <span>등락가</span>
+              <span>등락율</span>
+              <span>현재가격</span>
+            </div>
+        </div>
+      </div>
+        {/* <div className="kospi">
+            { kospiData.map<Ko>(item => item[0]).map(item => {
+              return (
+                <li>{item['종목명']} {item['등락가']} {item['등락율']} {item['종가']} {item['날짜']}</li>
+              )
+            })}
+        </div> */}
+        {/* <div className="kosdaq">
+            { kosdaqData.map<Ko>(item => item[0]).map(item => {
+              return (
+                <li>{item['종목명']} {item['등락가']} {item['등락율']} {item['종가']} {item['날짜']}</li>
+              )
+            })}
+        </div> */}
     </div>
   );
 }

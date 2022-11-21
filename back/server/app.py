@@ -32,4 +32,4 @@ def get_kospi():
 # 내용 (code,날짜,등락가,등락율,종가,종목명)
 @app.route('/table_data_kosdaq', methods=['GET'])
 def get_kosdaq():
-  return table. kosdaq_data();
+  return table.kosdaq_data();
