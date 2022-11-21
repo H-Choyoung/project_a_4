@@ -10,7 +10,6 @@ config = {
     "database":os.environ.get("MARIADB_DB")
 }
 
-print("테스트")
 
 class Database:
     def __init__(self):

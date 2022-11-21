@@ -5,3 +5,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.App > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.App > div > p {
+    cursor: pointer;
+}
