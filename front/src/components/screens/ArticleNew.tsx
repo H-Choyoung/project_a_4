@@ -4,19 +4,19 @@ import { Item } from 'App'
 import { RootObject } from 'App'
 
 const ArticleNew = ({data} : {data:RootObject}) : any => {
-  console.log(data.items)
+  // console.log(data)
   let articlebox = data.items
 
   let article = articlebox.map((el,index)=> {
-    console.log(el.title)
+    // console.log(el.title)
     return (
-      <div>
+      <div key={index}>
         <a 
         target="_blank"
         href={`${el.link}`} 
         className='p' 
         dangerouslySetInnerHTML={{__html:el.title}} 
-        key={index}></a>
+        ></a>
       </div>
     )
   })

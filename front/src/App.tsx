@@ -41,7 +41,7 @@ function App() {
   const [title, setTitle] = useState<string>("")
   // const [title, setTitle] = useState<string>("") 
   const onInput = (e:any) : void => {
-    console.log(e)
+    // console.log(e)
   }
 
 
@@ -50,8 +50,11 @@ function App() {
       const datas = await axios.get(
         `http://127.0.0.1:8080/${title}`
       )
+      console.log(datas)
       setCount(datas.data.sim)
+      console.log(count)
       setCountNew(datas.data.date)
+      console.log(countNew)
       // console.log(datas.data.sim.items)
     }
     getDatas()
@@ -59,26 +62,40 @@ function App() {
 
   return (
     <div className="root">
-      <div>main
-        <form onSubmit={async (e) => {
-          e.preventDefault()
-          const input = await axios.get(
-            `http://127.0.0.1:8080/${title}`
-          )
-          console.log(input.data)
-          setCount(input.data)
-          setCountNew(input.data)
-        }}>
-          <input onChange={(e)=> {
-            console.log(e.target.value)
-            setTitle(e.target.value)
-          }}
-          type="text" 
-          
-          placeholder='종목 검색' 
-          id="id" />
-          <button>검색하기</button>
-        </form>
+      <div className='mainArea'>
+        <div className='searchArea'>
+          <p>주식 매수매도 추천서비스</p>
+          <div>
+            <form onSubmit={async (e) => {
+              e.preventDefault()
+              const input = await axios.get(
+                `http://127.0.0.1:8080/${title}`
+              )
+              // console.log(input.data)
+              setCount(input.data.sim)
+              setCountNew(input.data.date)
+            }}>
+              <input onChange={(e)=> {
+                // console.log(e.target.value)
+                setTitle(e.target.value)
+              }}
+              type="text" 
+              placeholder='종목 검색' 
+              id="id" />
+              <button>검색하기</button>
+            </form>
+          </div>
+        </div>
+
+        <div className="stockInfoTitle">
+          주식 거래량 순위
+        </div>
+
+        <div className="tableArea">
+          테이블 영역
+        </div>
+
+
       </div>
       {/* 뉴스페이지 컨테이너 */}
       <div>

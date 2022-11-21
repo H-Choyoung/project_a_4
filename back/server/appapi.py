@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 import requests
 
@@ -51,7 +51,7 @@ def serch_get(companyname):
     "sim" : r3,
     "date" : r4
   }
-  print(obj)
+  # print(obj)
   return obj
 
 if __name__ == '__main__':

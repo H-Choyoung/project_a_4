@@ -7,11 +7,54 @@
 * {
   font-family: 'NanumSquareNeo-Variable';
 }
+.mainArea {
+  width: 1320px;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.searchArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 1120px;
+  height: 64 px;
+  margin-top: 97px;
+  /* border-radius: 68px; */
+} 
+.searchArea > :first-child {
+  font-size: 32px;
+  font-weight: 700;
+  /* margin-right: 100px; */
+}
+.searchArea > :last-child {
+  display: flex;
+  align-items: center;
+  width: 681px;
+  height: 48px;
+  border: 3px solid #D7FF38;
+  border-radius: 68px;
+
+}
+.stockInfoTitle{
+  color: white;  
+  border: 3px solid #ffffff;
+  width: 1120px;
+}
+.tableArea{
+  color: white;  
+  border: 3px solid #ffffff;
+  width: 1120px;
+}
 .root {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: flex-end;
+  background-color: #000;
 }
 .root > :last-child {
   width: 600px;
