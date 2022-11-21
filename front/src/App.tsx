@@ -3,6 +3,7 @@ import './components/css/App.css';
 import Article from 'components/screens/Article';
 import axios from 'axios';
 import ArticleNew from 'components/screens/ArticleNew';
+import {BiSearch} from  'react-icons/bi'
 
 export interface Item {
   description: string;
@@ -61,11 +62,15 @@ function App() {
   },[])
 
   return (
+    // 루트
     <div className="root">
-      <div className='mainArea'>
+      {/* 검정배경 메인영역 */}
+      <div className='mainContainer'>
+        {/* 검색 컨테이너 */}
         <div className='searchArea'>
           <p>주식 매수매도 추천서비스</p>
           <div>
+            <BiSearch size={24} className="searchIcon"/>
             <form onSubmit={async (e) => {
               e.preventDefault()
               const input = await axios.get(
@@ -75,24 +80,30 @@ function App() {
               setCount(input.data.sim)
               setCountNew(input.data.date)
             }}>
-              <input onChange={(e)=> {
+              <input
+                className='input'
+                onChange={(e)=> {
                 // console.log(e.target.value)
                 setTitle(e.target.value)
               }}
               type="text" 
               placeholder='종목 검색' 
               id="id" />
-              <button>검색하기</button>
+              <button className='inputButton'>검색하기</button>
             </form>
           </div>
         </div>
 
-        <div className="stockInfoTitle">
-          주식 거래량 순위
-        </div>
-
-        <div className="tableArea">
-          테이블 영역
+        {/* 테이블 컨테이너 */}
+        <div className='tableContainer'>
+          {/* 타이틀 */}
+          <div className="stockInfoTitle">
+            <p>주식 거래량 순위</p>
+          </div>
+          {/* 테이블영역 */}
+          <div className="tableArea">
+            <p>테이블 삽입영역</p>
+          </div>
         </div>
 
 
@@ -101,7 +112,7 @@ function App() {
       <div>
         {/* 제목 */}
         <div className='title'>
-          <p>{title} 관련뉴스</p>
+          <p className='newsTitle'>{title} 관련뉴스에요</p>
         </div>
 
         <div className='container'>
