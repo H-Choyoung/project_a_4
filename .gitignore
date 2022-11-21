@@ -16,3 +16,11 @@ back/ProjectA4/Scripts/python.exe
 back/ProjectA4/Scripts/pythonw.exe
 back/ProjectA4/Scripts/ttx.exe
 back/ProjectA4/share/man/man1/ttx.1
+back/ProjectA4/Scripts/autopep8.exe
+back/ProjectA4/Scripts/dotenv.exe
+back/ProjectA4/Scripts/pipenv-resolver.exe
+back/ProjectA4/Scripts/pipenv.exe
+back/ProjectA4/Scripts/pycodestyle.exe
+back/ProjectA4/Scripts/sample.exe
+back/ProjectA4/Scripts/virtualenv-clone.exe
+back/ProjectA4/Scripts/virtualenv.exe

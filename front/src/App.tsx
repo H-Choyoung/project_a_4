@@ -24,6 +24,14 @@ interface Proptypes {
   data : Item[];
 }
 
+interface GetDb {
+  name : string;
+}
+
+interface DB {
+  company : GetDb[]
+}
+
 function App() {
   const [count, setCount] = useState<RootObject>({
     display: 1,
@@ -41,26 +49,32 @@ function App() {
   })
   const [title, setTitle] = useState<string>("")
   // const [title, setTitle] = useState<string>("") 
-  const onInput = (e:any) : void => {
-    // console.log(e)
-  }
+  // const onInput = (e:any) : void => {
+    //   // console.log(e)
+    // }
+  const [getName, setGetName] = useState<DB>({
+    company : []
+  })
 
-
+  const [check , setCheck] = useState<string[]>([])
+  
   useEffect(()=> {
     const getDatas = async () => {
       const datas = await axios.get(
         `http://127.0.0.1:8080/${title}`
-      )
-      console.log(datas)
+        )
+        console.log(datas.data.name[0].name)
       setCount(datas.data.sim)
-      console.log(count)
+      // console.log(count)
       setCountNew(datas.data.date)
-      console.log(countNew)
+      // console.log(countNew)
+      
+      setGetName(datas.data.name)
       // console.log(datas.data.sim.items)
     }
     getDatas()
   },[])
-
+  console.log(getName)
   return (
     // 루트
     <div className="root">
@@ -85,6 +99,9 @@ function App() {
                 onChange={(e)=> {
                 // console.log(e.target.value)
                 setTitle(e.target.value)
+                // setCheck(()=>{
+                //   getName
+                // })
               }}
               type="text" 
               placeholder='종목 검색' 
@@ -112,7 +129,7 @@ function App() {
       <div>
         {/* 제목 */}
         <div className='title'>
-          <p className='newsTitle'>{title} 관련뉴스에요</p>
+          <p className='newsTitle'>{title} 관련뉴스예요</p>
         </div>
 
         <div className='container'>
