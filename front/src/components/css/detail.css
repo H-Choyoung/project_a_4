@@ -1,9 +1,10 @@
 .detail {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background-color: #000000;
 }
 
 .section {
@@ -11,10 +12,32 @@
     height: auto;
 }
 
+.wrapArrow {
+    color: white;
+    font-weight: 700;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 0;
+}
+
+.wrapArrow > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapArrow > div > p {
+    margin: 10px 0 10px 15px;
+}
+
 .chart {
     width: 100%;
     height: auto;
+    background-color: #1e1e1e;
 }
+
 .btn_wrap {
     display: flex;
     justify-content: flex-start;
@@ -43,6 +66,26 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
+    height: 90px;
+}
+
+.recommend {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.recommend > button {
+    width: 334px;
+    height: 84px;
+    left: 886px;
+    top: 903px;
+    font-size: 25px;
+    font-weight: 700;
+    background: #ff7676;
+    color: white;
+    border-radius: 71.5px 0px 71.5px 10px;
 }
 
 /* .apexcharts-legend-series {

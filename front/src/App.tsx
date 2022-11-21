@@ -30,7 +30,7 @@ function App() {
         navigate(
             `/detail?market=${ko.market.toLowerCase()}&code=${
                 ko.code
-            }&company=${ko.name}`
+            }&company=${ko.name}&day=month`
         );
     };
 
@@ -40,8 +40,6 @@ function App() {
                 "http://localhost:8080/index"
             );
             setCount(company.data);
-
-            console.log(company);
         };
         getData();
     }, []);

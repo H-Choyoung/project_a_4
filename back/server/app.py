@@ -1,21 +1,15 @@
 import sys,os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from flask import Flask, jsonify, json, request
+from flask import Flask, json
 from config import db
 from flask_cors import CORS
-from urllib.parse import parse_qs, urlencode
-from routes import search, main
-import pandas as pd
-import numpy as np
+from routes.view import graph
 
 app = Flask(__name__)
 CORS(app)
 
 # app.register_blueprint(main.api)
 # app.register_blueprint(search.api)
-
-
-
 
 
 
@@ -45,20 +39,8 @@ def request_Data():
 
 
 @app.route('/detail', methods=["GET"])
-def get_URl():
-
-    market = request.args.get('market')
-    code = request.args.get('code')
-    db_class = db.Database()
-    sql = f'SELECT day, open, high, low, close FROM {market}_{code}_d'
-    row = db_class.executeAll(sql)
-
-    frame = pd.DataFrame(row)
-    data = []
-
-    for index, row1 in list(frame.iterrows()):
-        data.append([row1['day'], row1['open'],row1['high'],row1['low'],row1['close']])
-   
+def detailRoute():
+    data = graph.get_graph()
     response = app.response_class (
         response = json.dumps(data),
         status=200,
