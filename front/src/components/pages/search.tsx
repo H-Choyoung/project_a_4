@@ -1,10 +1,15 @@
 import axios, { Axios } from "axios";
+import { stringify } from "querystring";
 import React, {useState} from "react";
 
-
+interface value{
+    company: string;
+  };
 const SearchBar = () =>{
     const [txValue, setTextValue] = useState(""); 
      
+   
+    //input 값 useState에 넣어주기 
     const onInput =(e:React.ChangeEvent<HTMLInputElement>)=>{
      setTextValue(e.target.value)
     }
@@ -12,17 +17,19 @@ const SearchBar = () =>{
     const onclick = (e:React.MouseEvent<HTMLButtonElement ,MouseEvent>) => {
     // alert(txValue);
     // let name:string = txValue;
-    console.log(txValue)
+     console.log(txValue)
     };  
     
-    const url ="http://localhost:5000 "
+    const url ="http://localhost:5000/value "
     function submit(e: any){
-        e.preventDefault(); 
-        axios.post(url,{
-            company: txValue
-
-        }).then(res :any => {
-            console.log(res.txValue)
+        console.log(e)
+         e.preventDefault(); 
+        axios.get( `localhost:5000/value/${txValue}`
+            
+       
+        //    company: object = txValue.company
+        ).then(response => {
+            console.log(response)
         })
     }
     
@@ -66,9 +73,9 @@ const SearchBar = () =>{
  
       <div className="header">
         <form onSubmit={(e) =>submit(e)}>
-      <input className="iptSearch" id="keyword" value={txValue} onChange={onInput}/>
+      <input className="iptSearch" id="keyword" value ={txValue} onChange={onInput}/>
       <button className="search" onClick={onclick} >
-          <span>검색</span>
+           <span>검색</span> 
       </button>
       </form>
       {/* <p>{txValue}</p> */}
