@@ -15,7 +15,6 @@ from routes.view import news
 app = Flask(__name__)
 CORS(app)
 
-# 예시용
 @app.route('/', methods=['GET'])
 def homeRoute():
   # *중요: 모듈객체는 호출이 불가능하기에 아래와 같이 호출해줘야 함 

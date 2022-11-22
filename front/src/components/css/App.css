@@ -41,7 +41,11 @@
 .searchIcon {
   margin : 0 16px 0 24px;
 }
+/* .form {
+  width: 100%;
+} */
 .input {
+  width: 500px;
   height: 32px;
   font-size: 15px;
   border: 0;
@@ -127,5 +131,13 @@
 .newsTitle {
   font-size: 18px;
   font-weight: 700;
+}
+.searchResult {
+  width: 300px;
+  height: 30px;
+  background-color: #333;
+}
+.searchResultValue {
+  color:#D7FF38 ;
 }
 

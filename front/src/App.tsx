@@ -4,6 +4,7 @@ import Article from 'components/screens/Article';
 import axios from 'axios';
 import ArticleNew from 'components/screens/ArticleNew';
 import {BiSearch} from  'react-icons/bi'
+import Realtedsearch from 'components/screens/Realtedsearch';
 
 export interface Item {
   description: string;
@@ -52,29 +53,36 @@ function App() {
   // const onInput = (e:any) : void => {
     //   // console.log(e)
     // }
-  const [getName, setGetName] = useState<DB>({
+  const [getName, setGetName] = useState<any>({
     company : []
   })
 
-  const [check , setCheck] = useState<string[]>([])
+  interface Data {
+    name : string
+  }
+
+  // const [data, setData] = useState<st>
+
+  const [search , setSearch] = useState<any>([])
   
   useEffect(()=> {
     const getDatas = async () => {
       const datas = await axios.get(
         `http://127.0.0.1:8080/${title}`
         )
-        console.log(datas.data.name[0].name)
+        // console.log(datas.data.name[0].name)
       setCount(datas.data.sim)
       // console.log(count)
       setCountNew(datas.data.date)
       // console.log(countNew)
-      
       setGetName(datas.data.name)
       // console.log(datas.data.sim.items)
     }
     getDatas()
+    
   },[])
-  console.log(getName)
+
+  // console.log(getName)
   return (
     // 루트
     <div className="root">
@@ -85,7 +93,9 @@ function App() {
           <p>주식 매수매도 추천서비스</p>
           <div>
             <BiSearch size={24} className="searchIcon"/>
-            <form onSubmit={async (e) => {
+            <form 
+            className='form'
+            onSubmit={async (e) => {
               e.preventDefault()
               const input = await axios.get(
                 `http://127.0.0.1:8080/${title}`
@@ -95,17 +105,36 @@ function App() {
               setCountNew(input.data.date)
             }}>
               <input
+                // value={search}
                 className='input'
                 onChange={(e)=> {
-                // console.log(e.target.value)
-                setTitle(e.target.value)
-                // setCheck(()=>{
-                //   getName
-                // })
-              }}
-              type="text" 
+                  let data = e.target.value
+                  setTitle(data)
+                  let filterData = getName.filter((i:any)=>{
+                    return i.name.includes(data)
+                    })
+                  if(data.length === 0) {
+                    filterData = [];
+                  }
+                  console.log(filterData)
+                  setSearch(filterData)
+                }}
+                type="text" 
               placeholder='종목 검색' 
-              id="id" />
+              id="id">
+              </input>
+              {search.map((item:any)=> {
+                return (
+                  <>
+                    <div className='searchResult'>
+                      <p 
+                      className='searchResultValue' 
+                      onClick={()=> setSearch([])}>{item.name}
+                      </p>
+                    </div>
+                  </>
+                )
+              })}
               <button className='inputButton'>검색하기</button>
             </form>
           </div>
