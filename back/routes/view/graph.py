@@ -19,55 +19,45 @@ def get_graph():
 
     row = db_class.executeAll(sql)
 
+ 
+
     frame = pd.DataFrame(row)
-    
-    print(frame)
     if day == 'month':
-        Day = frame.iloc[-1]
-        Last_Day = frame.iloc[-2]
+        Day = frame.iloc[-1]['day']
+        current_month = Day - relativedelta(weeks=1)
+        last_month = current_month - relativedelta(weeks=1)
     elif day == 'year':
         Day = frame.iloc[-1]['day']
-        last_month = Day - relativedelta(months=1)
-        # test =  Day.timedelta(weeks=1)
-        print(last_month)
-        # now = datetime.datetime.Day
-        # print(now.strftime('%Y-%m-%d')) 
-        # datetime.timedelta(months=-1)
-        # 2021-12-28 ~  2022-01-28 = 12-28 - 01-28
-        # 2021-01-28  ~ 2022-01-28
-        
-        # print(arr)
-        # test = dt.datetime.strptime("2017-01-02", "%Y-%m-%d")
-        # print(test,"aa")
-        # my_date = datetime.datetime(int(arr[0]) , int(arr[1]), int(arr[2])).timedelta(months=-1)
-        # print(my_date)
-        # print(my_date)
-        # print(Day+datetime.timedelta(months=-1))
-        # # month = frame['테스트'].between('2021-01-01', '2021-12-31')
-        # print(Day)
+        current_month = Day - relativedelta(months=1)
+        last_month = current_month - relativedelta(months=1)
 
-    # return "a"
-    #  일 등락률 = (오늘종가 – 어제종가) / 어제종가 * 100
-    rate = (Day['close'] - Last_Day['close']) / Last_Day['close'] * 100
-    prev_day_price = (Day['close'] - Last_Day['close'])
-    today_price = (Day['close'])
+    Day = frame.iloc[-1]['day']
+        
+    current_M = frame[frame['day'].between(current_month, Day)]['close'].mean()
+    last_M = frame[frame['day'].between(last_month, current_month)]['close'].mean()
+      
+
+  
+
+    # rate = (Day['close'] - Last_Day['close']) / Last_Day['close'] * 100
+    # prev_day_price = (Day['close'] - Last_Day['close'])
+    # today_price = (Day['close'])
+
+    rate = (current_M - last_M) / last_M * 100
+    prev_day_price = (current_M - last_M)
+    today_price = (current_M)
+
 
 
     rate = np.float64(rate).item()
     prev_day_price = np.int64(prev_day_price).item()
     today_price = np.int64(today_price).item()
     
-    
-     
-    
-  
-
     obj = {
         "rate":rate,
         "prev_day_price":prev_day_price,
         "today_price":today_price,
     }
-
 
 
     data = []
