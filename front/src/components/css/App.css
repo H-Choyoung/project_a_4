@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: 'NanumSquareNeo-Variable';
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainContainer {
+  width: 1320px;
+  height: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+}
+.searchArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: white;
+  width: 1120px;
+  height: 64 px;
+  margin-top: 97px;
+  /* border-radius: 68px; */
+} 
+.searchArea > :first-child {
+  font-size: 32px;
+  font-weight: 700;
+  /* margin-right: 100px; */
+}
+.searchArea > :last-child {
+  display: flex;
+  align-items: center;
+  width: 681px;
+  height: 48px;
+  border: 3px solid #D7FF38;
+  border-radius: 68px;
+}
+.searchIcon {
+  margin : 0 16px 0 24px;
+}
+.input {
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  color: white;
+  background-color:black;
+}
+.inputButton {
+  display: none;
+}
+.stockInfoTitle{
+  color: white;  
+  width: inherit;
+  height: 10%;
+}
+.stockInfoTitle > :first-child {
+  font-size: 20px;
+  font-weight: 700;
+}
+.tableArea{
+  color: white;  
+  background-color: #292929;
+  width: inherit;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.tableContainer {
+  width: 1120px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+}
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #000;
+}
+.root > :last-child {
+  width: 600px;
+  height: inherit;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  color: white;
+  margin-top: 119px;
+  margin-bottom: 32px;
+  /* position: absolute; */
+  /* top: 119px; */
+}
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 456px;
+  height: 240px;
+  margin-bottom: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.articleContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.detailTitle {
+  font-weight: 700;
+  margin-left: 24px;
+  margin-top: 24px;
+  /* color: white; */
+}
+.container {
+  margin-bottom: 48px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.newsTitle {
+  font-size: 18px;
+  font-weight: 700;
 }
