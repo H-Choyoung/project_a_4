@@ -1,6 +1,6 @@
 import sys,os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from flask import Flask, json
+from flask import Flask, json, jsonify
 from config import db
 from flask_cors import CORS
 from routes.view import graph
@@ -48,12 +48,6 @@ def detailRoute():
     )
     return response
 
-
-
-
-
-
-    
 
 
 
