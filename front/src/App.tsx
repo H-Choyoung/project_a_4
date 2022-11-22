@@ -27,10 +27,11 @@ function App() {
     });
 
     const kosdakClick = (ko: Ko) => {
+        console.log(ko);
         navigate(
             `/detail?market=${ko.market.toLowerCase()}&code=${
                 ko.code
-            }&company=${ko.name}&day=month`
+            }&company=${ko.name.replace(/(\s*)/g, "")}&day=month`
         );
     };
 
