@@ -123,18 +123,20 @@ function App() {
               placeholder='종목 검색' 
               id="id">
               </input>
-              {search.map((item:any)=> {
-                return (
-                  <>
-                    <div className='searchResult'>
-                      <p 
-                      className='searchResultValue' 
-                      onClick={()=> setSearch([])}>{item.name}
-                      </p>
-                    </div>
-                  </>
-                )
-              })}
+              <div className='resultContainer'>
+                {search.map((item:any)=> {
+                  return (
+                    <>
+                      <div className='searchResult'>
+                        <p 
+                        className='searchResultValue' 
+                        onClick={()=> setSearch([])}>{item.name}
+                        </p>
+                      </div>
+                    </>
+                  )
+                })}
+              </div>
               <button className='inputButton'>검색하기</button>
             </form>
           </div>
