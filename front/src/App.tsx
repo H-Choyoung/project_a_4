@@ -108,8 +108,12 @@ function App() {
               setCountNew(input.data.date)
             }}>
               <input
+                autoComplete='off'
                 // value={search}
                 className='input'
+                onKeyDown={(e)=> {
+                  console.log(e.code)
+                }}
                 onChange={(e)=> {
                   let data = e.target.value
                   setTitle(data)
@@ -135,7 +139,7 @@ function App() {
                       className='searchResult'
                       onClick={()=> {
                         console.log(item)
-                        navigate(`/companyname?=${item.name}`)
+                        navigate(`/companyname/${item.name}`)
                         return (
                           setSearch([])
                         )

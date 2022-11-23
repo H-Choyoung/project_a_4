@@ -9,9 +9,13 @@ function Test() {
   const detail = searchParams.get('detail');
   const mode = searchParams.get('mode');
 
-  const location = useLocation();      
+  const location = useLocation(); 
+  // const decodeUri = decodeURI(HISTORY.location?.search)
   const params = useParams();
-  console.log(params)                         
+  console.log(params.test)
+
+  const test = decodeURI(location?.search)
+  console.log(test)                         
   
   return (
     <div>
@@ -21,8 +25,8 @@ function Test() {
       }}
       style={{width:'50px', height : '50px', backgroundColor : "salmon" }}>back
       </div>
-      <p>쿼리스트링</p>
-      <p>{location.search}</p>
+      <p>선택된 종목</p>
+      <h1>{params.name}</h1>
     </div>
 
   )
