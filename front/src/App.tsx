@@ -18,17 +18,9 @@ interface Ko {
   '종목명': string;
   // item : string
 }
- interface value{
-    company: string; 
-  };
+
   
-
-
-
-
 const App = () =>{ 
-
-  
   const [kospiData, setKospiData] = useState([]);
   const [kosdaqData, setKosdaqData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -68,9 +60,7 @@ const App = () =>{
   console.log(kosdaqname)
   console.log(kosipe)
 
-   
-
-
+  
   //  -----------------------------------------------------------------
 
      
@@ -90,25 +80,7 @@ const App = () =>{
     //  let name:string = txValue;
           // console.log(txValue)
     };   
-
     
-    //filter 기능 
-    // let filterData = kosdaqname.filter((i: any) => {
-     
-
-    //  const filteredComponents = () => { 
-    //    let data = kosdaqname.filter((i: any) => { 
-    //     return i.name.includes(txValue) 
-    //     console.log("gggggggggggggggg")
-    //     console.log(txValue)
-        
-       
-    //    }) 
-    //    console.log(data)
-    //  } 
-
-    //  filteredComponents()
-
      return ( 
         <div className="header">
           {/* <form onSubmit={(e) =>sendForm(e)}> */}
