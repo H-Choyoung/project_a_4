@@ -49,6 +49,11 @@ def detailRoute():
     return response
 
 
+@app.route('/test', methods=["GET"])
+def testData():
+    data = graph.get_prediction()
+    print(data)
+    return 'a'
 
 
 # @app.route("/search", methods=["GET"])

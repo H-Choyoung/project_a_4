@@ -130,7 +130,7 @@ const Detail = () => {
                                 size={48}
                                 cursor={"pointer"}
                                 onClick={() => {
-                                    navigate(-1);
+                                    navigate("/");
                                 }}
                             />
                             <p>{searchParams.get("company")}</p>

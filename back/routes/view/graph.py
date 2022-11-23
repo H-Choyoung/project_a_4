@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 import datetime
 from dateutil.relativedelta import relativedelta
+from prophet import Prophet
+
 
 
 def get_graph():
@@ -68,4 +70,23 @@ def get_graph():
    
 
     return obj
+    
+
+
+def get_prediction():
+    db_class = db.Database()
+    sql  = "SELECT * FROM kospi_005930_d"
+
+    row = db_class.executeAll(sql)
+
+    print(row)
+
+
+    df_tmp = pd.DataFrame({"ds": df_raw["Date"], "y": df_raw["Close*"]})
+    
+    df_target = df_tmp[:-1]
+    df_target.head()
+
+
+    return 'a'
     
