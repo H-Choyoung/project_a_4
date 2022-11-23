@@ -5,6 +5,7 @@ import axios from 'axios';
 import ArticleNew from 'components/screens/ArticleNew';
 import {BiSearch} from  'react-icons/bi'
 import Realtedsearch from 'components/screens/Realtedsearch';
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 export interface Item {
   description: string;
@@ -64,7 +65,9 @@ function App() {
   // const [data, setData] = useState<st>
 
   const [search , setSearch] = useState<any>([])
-  
+
+  const navigate = useNavigate();
+
   useEffect(()=> {
     const getDatas = async () => {
       const datas = await axios.get(
@@ -116,7 +119,7 @@ function App() {
                   if(data.length === 0) {
                     filterData = [];
                   }
-                  console.log(filterData)
+                  // console.log(filterData)
                   setSearch(filterData)
                 }}
                 type="text" 
@@ -124,16 +127,27 @@ function App() {
               id="id">
               </input>
               <div className='resultContainer'>
-                {search.map((item:any)=> {
+                {search.map((item:any, index:number)=> {
                   return (
-                    <>
-                      <div className='searchResult'>
+                    <div key={index}>
+                      <div
+                
+                      className='searchResult'
+                      onClick={()=> {
+                        console.log(item)
+                        navigate(`/companyname?=${item.name}`)
+                        return (
+                          setSearch([])
+                        )
+                      }}
+                      >
                         <p 
                         className='searchResultValue' 
-                        onClick={()=> setSearch([])}>{item.name}
+                        // onClick={()=> setSearch([])}
+                        >{item.name}
                         </p>
                       </div>
-                    </>
+                    </div>
                   )
                 })}
               </div>

@@ -141,15 +141,27 @@
   background-color: #333;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #444;
   /* position: relative; */
+}
+.searchResult:hover {
+  background-color: rgb(146, 146, 146);
 }
 .searchResultValue {
   color:#D7FF38 ;
-  margin:0;
+  margin:0 0 0 16px;
+  
   /* position: absolute; */
 }
 .resultContainer {
   position: absolute;
   margin: 10px;
+  height: 300px;
+  overflow-y: auto;
+  transition: 1s;
+  border-radius: 0 0 10px 10px;
+}
+.resultContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
