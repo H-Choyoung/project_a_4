@@ -28,7 +28,7 @@ const RankStyleFont =({strData}:strProps)=> {
     }
   });
     return(
-      <span className="riseAndFall" style={{color:fontCol}}>{strData}</span>
+      <span className="riseAndFall" style={{color:fontCol}}>{strData}%</span>
     );
   };
 
@@ -48,7 +48,7 @@ const RankStyleFontNum =({numData}:numProps)=> {
     }
   });
     return(
-      <span className="riseAndFall" style={{color:fontCol}}>{numData}</span>
+      <span className="riseAndFall" style={{color:fontCol}}>{numData}원</span>
     );
   };
 
