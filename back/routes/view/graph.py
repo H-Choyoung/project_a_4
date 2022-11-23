@@ -7,6 +7,7 @@ import numpy as np
 import datetime
 from dateutil.relativedelta import relativedelta
 from prophet import Prophet
+import matplotlib.pyplot as plt
 
 
 
@@ -75,18 +76,25 @@ def get_graph():
 
 def get_prediction():
     db_class = db.Database()
-    sql  = "SELECT * FROM kospi_005930_d"
-
+    sql  = "SELECT day, close FROM kospi_005930_d"
     row = db_class.executeAll(sql)
 
     print(row)
 
+    df_company = pd.DataFrame(row)
+    df_samsung = pd.DataFrame({"ds": df_company["day"], "y": df_company["close"]})
 
-    df_tmp = pd.DataFrame({"ds": df_raw["Date"], "y": df_raw["Close*"]})
-    
-    df_target = df_tmp[:-1]
-    df_target.head()
+    m = Prophet(yearly_seasonality=True, daily_seasonality=True)
+    m.fit(df_samsung)
+    future = m.make_future_dataframe(periods=100)
+    forecast = m.predict(future)
+    forecast.tail()
+
+    print(forecast.tail())
+    m.plot(forecast)
 
 
-    return 'a'
+    return forecast.tail()
+
+  
     
