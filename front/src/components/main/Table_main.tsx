@@ -78,7 +78,6 @@ function Table(){
   //3. 정렬된 배열 변수에 담기(리턴에서 사용)
   const sortKospi = sortData(getKospi);
   const sortKosdak = sortData(getKosdaq);
-      
 
   return (
     <div id="section">
@@ -104,7 +103,7 @@ function Table(){
               <ReactLoading type="bars" color="#D7FF38" />
               </>
             ):("")}
-            <div ref={(e:any) => setTarget(e)}></div>
+          <div ref={(e:any) => setTarget(e)}></div>
           </div>
         </div>
         <div className="kosdaqSection">
@@ -128,7 +127,7 @@ function Table(){
               <ReactLoading type="bars" color="#D7FF38" />
               </>
             ):("")}
-            <div ref={(e:any) => setTarget(e)}></div>        
+          <div ref={(e:any) => setTarget(e)}></div>        
           </div>
         </div>
       </div>
