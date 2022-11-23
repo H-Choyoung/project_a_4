@@ -1,0 +1,53 @@
+#section {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.tables {
+  width: 95vw;
+  height: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 10px;
+}
+.kospiSection {
+  width: 50%;
+  height: 100%;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.kosdaqSection {
+  width: 50%;
+  height: 100%;
+  background-color: #515151;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.marketName {
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+
+.rows {
+  width: 80%;
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  color: black;
+  font-size: 14;
+}

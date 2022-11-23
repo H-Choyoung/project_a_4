@@ -4,7 +4,7 @@ import pymysql
 def getCodes(market): 
     # *DB connect
     conn = pymysql.connect(host='127.0.0.1', user='root',
-                           password='fullstack305', port=3306, db='aitrading_db', charset='utf8')
+                           password='1234', port=3306, db='aitrading_db', charset='utf8')
     try:
         #코드명 가져오기
         qr = f"""
@@ -22,3 +22,5 @@ def getCodes(market):
         return codeList
     finally:
         conn.close()
+        
+# getCodes()
