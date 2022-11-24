@@ -24,3 +24,7 @@ back/ProjectA4/Scripts/pycodestyle.exe
 back/ProjectA4/Scripts/sample.exe
 back/ProjectA4/Scripts/virtualenv-clone.exe
 back/ProjectA4/Scripts/virtualenv.exe
+back/config/__pycache__/db.cpython-310.pyc
+back/routes/__pycache__/__init__.cpython-310.pyc
+back/routes/view/__pycache__/news.cpython-310.pyc
+back/server/__pycache__/app.cpython-310.pyc
