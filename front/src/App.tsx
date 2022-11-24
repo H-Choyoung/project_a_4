@@ -94,11 +94,12 @@ function App() {
         {/* 검색 컨테이너 */}
         <div className='searchArea'>
           <p>주식 매수매도 추천서비스</p>
-          <div>
+          <div className='serachContainer'>
             <BiSearch size={24} className="searchIcon"/>
             <form 
             className='form'
-            onSubmit={async (e) => {
+            onSubmit={async (e:any) => {
+              // console.log(e.target[0].value)
               e.preventDefault()
               const input = await axios.get(
                 `http://127.0.0.1:8080/${title}`
@@ -106,6 +107,18 @@ function App() {
               // console.log(input.data)
               setCount(input.data.sim)
               setCountNew(input.data.date)
+              setSearch([])
+              // console.log(e.target[0].value)
+              // console.log(title)
+              let searchFilter = getName.filter((i:any)=>{
+                return i.name.includes(e.target[0].value)
+                })
+                console.log(searchFilter)
+                console.log(e.target[0].value)
+
+              if(e.target[0].value === searchFilter[0].name){
+                navigate(`/companyname/${title}`)
+              }
             }}>
               <input
                 autoComplete='off'
@@ -123,6 +136,7 @@ function App() {
                   if(data.length === 0) {
                     filterData = [];
                   }
+                  
                   // console.log(filterData)
                   setSearch(filterData)
                 }}
@@ -178,7 +192,8 @@ function App() {
       <div>
         {/* 제목 */}
         <div className='title'>
-          <p className='newsTitle'>{title} 관련뉴스예요</p>
+          <p className='newsTitle1'>{title} </p>
+          <p className='newsTitle2'>관련뉴스예요</p>
         </div>
 
         <div className='container'>

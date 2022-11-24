@@ -58,14 +58,14 @@ def home():
     "date" : r2,
     "name" : companyObj
   }
-  print(companyObj)
+  # print(companyObj)
   return obj
 
 # @app.route('/<companyname>')
 def serch_get(companyname):
-  print(companyname)
+  # print(companyname)
   serch_word = companyname
-  print(serch_word)
+  # print(serch_word)
 
   url3 = f"https://openapi.naver.com/v1/search/news.{encode_tpye}?query={serch_word}&display={str(int(max_display))}&start={str(int(start))}&sort=sim"
   url4 = f"https://openapi.naver.com/v1/search/news.{encode_tpye}?query={serch_word}&display={str(int(max_display))}&start={str(int(start))}&sort=date"

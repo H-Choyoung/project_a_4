@@ -35,10 +35,19 @@
   align-items: center;
   width: 681px;
   height: 48px;
-  border: 3px solid #D7FF38;
+  border: 3px solid #ddd;
   border-radius: 68px;
   position: relative;
 }
+.searchArea > :last-child:hover {
+  transition: .3s;
+  border-color: #ccff00;
+}
+.searchArea > :last-child:not(:hover) {
+  transition: .3s;
+  border-color: #ddd;
+}
+
 .searchIcon {
   margin : 0 16px 0 24px;
 }
@@ -104,6 +113,7 @@
   color: white;
   margin-top: 119px;
   margin-bottom: 32px;
+  display: flex;
   /* position: absolute; */
   /* top: 119px; */
 }
@@ -130,7 +140,13 @@
   background-color: #fff;
   border-radius: 10px;
 }
-.newsTitle {
+.newsTitle1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ccff00;
+  margin-right: 8px;
+}
+.newsTitle2 {
   font-size: 18px;
   font-weight: 700;
 }
