@@ -127,7 +127,7 @@ function Table(){
               <ReactLoading type="bars" color="#D7FF38" />
               </>
             ):("")}
-          <div ref={(e:any) => setTarget(e)}></div>        
+          {/* <div ref={(e:any) => setTarget(e)}></div>         */}
           </div>
         </div>
       </div>
