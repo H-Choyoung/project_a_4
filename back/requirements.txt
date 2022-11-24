@@ -42,3 +42,4 @@ virtualenv==20.16.6
 virtualenv-clone==0.5.7
 Werkzeug==2.2.2
 yfinance==0.1.85
+

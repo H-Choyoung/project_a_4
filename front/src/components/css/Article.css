@@ -1,0 +1,21 @@
+.articlebox {
+  width: 456px;
+  height: 295px;
+  background-color: #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.p {
+  margin: 0 24px 10px;
+  text-decoration: none;
+  display: block;
+    /* margin-block-start: 1em;
+    margin-block-end: 1em; */
+    margin-inline-start: 24px;
+    margin-inline-end: 24px;
+  /* text-decoration-color: black; */
+}
+.p:link{ color: black; text-decoration: none;}
+.p:visited{ color: rgb(119, 119, 119); text-decoration: none;}
