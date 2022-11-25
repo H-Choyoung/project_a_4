@@ -1,32 +1,25 @@
-from flask import Flask
-from flask_cors import CORS
 import requests
-import pymysql
+from config import db
+
+
 
 #db연결
-conn = pymysql.connect (
-  host='127.0.0.1',
-  port=3306,
-  user='root',
-  password='fullstack305',
-  db='aitrading_db',
-  charset='utf8'
-)
+# conn = pymysql.connect (
+#   host='127.0.0.1',
+#   port=3307,
+#   user='root',
+#   password='1234',
+#   db='aitrading_db',
+#   charset='utf8'
+# )
 
-cur = conn.cursor(pymysql.cursors.DictCursor)
-sql = 'SELECT name FROM companylist'
-cur.execute(sql)
-results = list(cur.fetchall())
+# cur = conn.cursor(pymysql.cursors.DictCursor)
+# sql = 'SELECT name FROM companylist'
+# cur.execute(sql)
+# results = list(cur.fetchall())
 # print(results)
 
-app = Flask(__name__)
-def main():
-  sql ='SELECT name FROM companylist'
-  cur.execute(sql)
-  results = cur.fetchall()
-  # print(list(results))
-  # print(list(results[0])[3])
-  return results
+
 
 client_id = "_85wvqThYJUdir8dWo5o"
 client_secret = "gmaG1XD16B"
@@ -45,14 +38,20 @@ headers = {
   "X-Naver-Client-Secret" : client_secret
 }
 
-app = Flask(__name__)
-CORS(app)
+
+def main():
+  db_class = db.Database()
+  sql ='SELECT name, code, market FROM companylist'
+  row = db_class.executeAll(sql)
+  return row
+
 
 # @app.route('/')
 def home():
   r1 = requests.get(urlSim, headers=headers).json()
   r2 = requests.get(urlDate, headers=headers).json()
   companyObj = main()
+
   obj = {
     "sim" : r1,
     "date" : r2,
@@ -79,5 +78,3 @@ def serch_get(companyname):
   # print(obj)
   return obj
 
-if __name__ == '__main__':
-  app.run(port =8080, debug=True)

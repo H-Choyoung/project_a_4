@@ -23,6 +23,7 @@ class Database:
         
     def execute(self, query, args={}):
         self.cursor.execute(query, args)
+        return
 
     def excuteOne(self, query, args={}):
         self.cursor.execute(query, args)

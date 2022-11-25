@@ -1,183 +1,184 @@
 @font-face {
-  font-family: 'NanumSquareNeo-Variable';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+    font-family: "NanumSquareNeo-Variable";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
 * {
-  font-family: 'NanumSquareNeo-Variable';
+    font-family: "NanumSquareNeo-Variable";
 }
 .mainContainer {
-  width: 1320px;
-  height: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .searchArea {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  width: 1120px;
-  height: 64 px;
-  margin-top: 97px;
-  /* border-radius: 68px; */
-} 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 1120px;
+    height: 64 px;
+    margin-top: 97px;
+    /* border-radius: 68px; */
+}
 .searchArea > :first-child {
-  font-size: 32px;
-  font-weight: 700;
-  /* margin-right: 100px; */
+    font-size: 32px;
+    font-weight: 700;
+    /* margin-right: 100px; */
 }
 .searchArea > :last-child {
-  display: flex;
-  align-items: center;
-  width: 681px;
-  height: 48px;
-  border: 3px solid #ddd;
-  border-radius: 68px;
-  position: relative;
+    display: flex;
+    align-items: center;
+    width: 681px;
+    height: 48px;
+    border: 3px solid #ddd;
+    border-radius: 68px;
+    position: relative;
 }
 .searchArea > :last-child:hover {
-  transition: .3s;
-  border-color: #ccff00;
+    transition: 0.3s;
+    border-color: #ccff00;
 }
 .searchArea > :last-child:not(:hover) {
-  transition: .3s;
-  border-color: #ddd;
+    transition: 0.3s;
+    border-color: #ddd;
 }
 
 .searchIcon {
-  margin : 0 16px 0 24px;
+    margin: 0 16px 0 24px;
 }
 /* .form {
   width: 100%;
 } */
 .input {
-  width: 500px;
-  height: 32px;
-  font-size: 15px;
-  border: 0;
-  border-radius: 15px;
-  outline: none;
-  padding-left: 10px;
-  color: white;
-  background-color:black;
-  position: relative;
+    width: 500px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    color: white;
+    background-color: black;
+    position: relative;
 }
 .inputButton {
-  display: none;
+    display: none;
 }
-.stockInfoTitle{
-  color: white;  
-  width: inherit;
-  height: 10%;
+.stockInfoTitle {
+    color: white;
+    width: inherit;
+    height: 10%;
 }
 .stockInfoTitle > :first-child {
-  font-size: 20px;
-  font-weight: 700;
+    font-size: 20px;
+    font-weight: 700;
 }
 .tableContainer {
-  width: 1120px;
-  height: 650px;
-  display: flex;
-  flex-direction: column;
+    width: 1120px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
 }
-.tableArea{
-  color: white;  
-  background-color: #292929;
-  width: inherit;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+.tableArea {
+    color: white;
+    background-color: #292929;
+    width: inherit;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
 .root {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-  background-color: #000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #000;
 }
 .root > :last-child {
-  width: 600px;
-  height: inherit;
-  background-color: #292929;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 600px;
+    padding: 0 50px;
+    height: inherit;
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .title {
-  color: white;
-  margin-top: 119px;
-  margin-bottom: 32px;
-  display: flex;
-  /* position: absolute; */
-  /* top: 119px; */
+    color: white;
+    margin-top: 119px;
+    margin-bottom: 32px;
+    display: flex;
+    /* position: absolute; */
+    /* top: 119px; */
 }
 .articleContainer {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  width: 456px;
-  height: 240px;
-  margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 456px;
+    height: 240px;
+    margin-bottom: 24px;
 }
 
 .articleContainer::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+    display: none; /* Chrome, Safari, Opera*/
 }
 .detailTitle {
-  font-weight: 700;
-  margin-left: 24px;
-  margin-top: 24px;
-  /* color: white; */
+    font-weight: 700;
+    margin-left: 24px;
+    margin-top: 24px;
+    /* color: white; */
 }
 .container {
-  margin-bottom: 48px;
-  background-color: #fff;
-  border-radius: 10px;
+    margin-bottom: 48px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 .newsTitle1 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ccff00;
-  margin-right: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ccff00;
+    margin-right: 8px;
 }
 .newsTitle2 {
-  font-size: 18px;
-  font-weight: 700;
+    font-size: 18px;
+    font-weight: 700;
 }
 .searchResult {
-  width:500px ;
-  height: 40px;
-  /* top: 50px; */
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #444;
-  /* position: relative; */
+    width: 500px;
+    height: 40px;
+    /* top: 50px; */
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    /* position: relative; */
 }
 .searchResult:hover {
-  background-color: rgb(146, 146, 146);
+    background-color: rgb(146, 146, 146);
 }
 .searchResultValue {
-  color:#D7FF38 ;
-  margin:0 0 0 16px;
-  
-  /* position: absolute; */
+    color: #d7ff38;
+    margin: 0 0 0 16px;
+
+    /* position: absolute; */
 }
 .resultContainer {
-  position: absolute;
-  margin: 10px;
-  height: 300px;
-  overflow-y: auto;
-  transition: 1s;
-  border-radius: 0 0 10px 10px;
+    position: absolute;
+    margin: 10px;
+    height: 300px;
+    overflow-y: auto;
+    transition: 1s;
+    border-radius: 0 0 10px 10px;
 }
 .resultContainer::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+    display: none; /* Chrome, Safari, Opera*/
 }
-

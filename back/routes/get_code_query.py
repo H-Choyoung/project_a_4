@@ -1,10 +1,9 @@
-import pymysql
-
+from config import db
 # 특정컬럼(코드)의 값을 list로 반환하는 함수
 def getCodes(market): 
     # *DB connect
-    conn = pymysql.connect(host='127.0.0.1', user='root',
-                           password='fullstack305', port=3306, db='aitrading_db', charset='utf8')
+    print(market)
+    db_class = db.Database()
     try:
         #코드명 가져오기
         qr = f"""
@@ -12,15 +11,16 @@ def getCodes(market):
         FROM companylist
         WHERE market='{market}'
         """
-        curs2 = conn.cursor(pymysql.cursors.DictCursor)
-        curs2.execute(qr)
-        rows2 = curs2.fetchall()
+
+        rows2 = db_class.executeAll(qr)
         codeList = list()
+        print(rows2)
         for code in rows2:
             codeList.append(code['code'])
         # print(codeList) #코드 리스트
         return codeList
     finally:
-        conn.close()
+        # db_class.commit()
+        print('a')
         
 # getCodes()
