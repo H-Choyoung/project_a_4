@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import '../css/Article.css'
 import { Item } from 'App'
 import { RootObject } from 'App'
@@ -23,4 +23,4 @@ const Article = ({data} : {data:RootObject}) : any => {
   return article  
 }
 
-export default Article
+export default memo(Article)

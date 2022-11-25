@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import "../css/table.css";
@@ -94,20 +94,43 @@ function Table() {
                     </div>
                     <div className="rowsContainer">
                         {sortKospi.map((item, idx) => {
-                            return (
-                                <RankStyle
-                                    key={idx}
-                                    idx={idx + 1}
-                                    name={item["종목명"]}
-                                    riseNfall={item["등락가"]}
-                                    riseNfallPer={item["등락율"]}
-                                    close={item["종가"]}
-                                    market={item["market"]}
-                                    code={item["code"]}
-                                    // onClick={onClickHandler}
-                                />
-                            );
+                            if(item["등락가"] !== 0){
+                                return (
+                                    <RankStyle
+                                        key={idx}
+                                        idx={idx + 1}
+                                        name={item["종목명"]}
+                                        riseNfall={item["등락가"]}
+                                        riseNfallPer={item["등락율"]}
+                                        close={item["종가"]}
+                                        market={item["market"]}
+                                        code={item["code"]}
+                                        // onClick={onClickHandler}
+                                    />
+                                );
+                            }
                         })}
+                        {/* {sortKospi.filter(val => val["종목명"] === '삼성전자').map((item, idx) => { */}
+                        {/* {sortKospi.map((item, idx) => {
+                            return item;
+                        })
+                        .filter((item, idx) => { 
+                            item["종목명"] === '삼성전자';
+                                return (
+                                    <RankStyle
+                                        key={idx}
+                                        idx={idx + 1}
+                                        name={item["종목명"]}
+                                        riseNfall={item["등락가"]}
+                                        riseNfallPer={item["등락율"]}
+                                        close={item["종가"]}
+                                        market={item["market"]}
+                                        code={item["code"]}
+                                        // onClick={onClickHandler}
+                                    />
+                                );
+                        }) */}
+                        {/* } */}
                         {loading ? (
                             <>
                                 <ReactLoading type="bars" color="#D7FF38" />
@@ -124,6 +147,7 @@ function Table() {
                     </div>
                     <div className="rowsContainer">
                         {sortKosdak.map((item, idx) => {
+                            if(item["등락가"] !== 0){
                             return (
                                 <RankStyle
                                     key={idx}
@@ -136,6 +160,7 @@ function Table() {
                                     code={item["code"]}
                                 />
                             );
+                            }
                         })}
                         {loading ? (
                             <>
@@ -152,4 +177,4 @@ function Table() {
     );
 }
 
-export default Table;
+export default memo(Table);
