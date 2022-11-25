@@ -26,20 +26,10 @@ CORS(app)
 # 내용 (code,날짜,등락가,등락율,종가,종목명)
 @app.route('/table_data_kospi', methods=['GET'])
 def get_kospi():
-    
   return table.kospi_data();
 
 # 테이블용 데이터(kosdaq)
 # 내용 (code,날짜,등락가,등락율,종가,종목명)
 @app.route('/table_data_kosdaq', methods=['GET'])
-def get_kosdaq(): 
-
+def get_kosdaq():
   return table.kosdaq_data();
-
-  
-@app.route('/value', methods = ['GET','POST'])
-def home(): 
-      args = request.json 
-      print(args) 
-  
-      return 'Hello, World!'

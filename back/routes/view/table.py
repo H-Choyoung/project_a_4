@@ -24,7 +24,7 @@ def kospi_data():
       """
       row3 = db_class3.executeAll(sql3)
       newArr3.append(row3)
-  print(newArr3)
+  # print(newArr)
   return newArr3
 
 # 코스닥
@@ -47,6 +47,5 @@ def kosdaq_data():
         """
         row_dak = db_class_dak.executeAll(sql_dak)
         newArr_dak.append(row_dak)
-    print(newArr_dak) 
-    
+    # print(newArr)
     return newArr_dak
