@@ -7,7 +7,9 @@
 }
 * {
     font-family: "NanumSquareNeo-Variable";
+    /* cursor: url("../../img/arrow.png")20 30, auto; */
 }
+
 .mainContainer {
     width: 100%;
     height: inherit;
@@ -32,12 +34,12 @@
 #name {
     font-size: 32px;
     font-weight: 700;
-    /* margin-right: 100px; */
+    margin-right: 65px;
 }
 .searchArea > :last-child {
     display: flex;
     align-items: center;
-    width: 670px;
+    width: 600px;
     height: 48px;
     border: 3px solid #ddd;
     border-radius: 68px;
