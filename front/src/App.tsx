@@ -8,6 +8,7 @@ import Realtedsearch from "components/screens/Realtedsearch";
 import { useNavigate, useNavigation } from "react-router-dom";
 import Router from "router";
 import Table from "components/main/Table_main";
+import moneyBird from "./img/moneyBird.png"
 export interface Item {
     description: string;
     link: string;
@@ -93,7 +94,8 @@ function App() {
             <div className="mainContainer">
                 {/* 검색 컨테이너 */}
                 <div className="searchArea">
-                    <p>주식 매수매도 추천서비스</p>
+                    <img className="logo" src={moneyBird}></img>
+                    <p id="name">주식 매수매도 추천서비스</p>
                     <div className="serachContainer">
                         <BiSearch size={24} className="searchIcon" />
                         <form
