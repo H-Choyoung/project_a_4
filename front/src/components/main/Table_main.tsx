@@ -32,7 +32,8 @@ function Table() {
     // target(관찰대상)
     const [target, setTarget] = useState(null);
     const [show, setShow] = useState(true);
-    const [read, setRead] = useState([]);
+    const [read, setRead] = useState([]); 
+    const [daqread,setdaqRead] =useState([]);
 
     // 데이터 페칭 함수
     let page: number = 1;
@@ -93,7 +94,10 @@ function Table() {
     let sortKosdak = sortData(getKosdaq);
 
     const onSubmit = (e: any) => {
-        e.preventDefault();
+        e.preventDefault(); 
+
+        setdaqRead([])
+        setRead([])
 
         if (e.type === "submit") {
             const kospi = sortKospi.filter((item) => { 
@@ -106,7 +110,7 @@ function Table() {
 
             if (kosdak.length !== 0) {
                 setShow(false);
-                setRead(kosdak);  
+                setdaqRead(kosdak);  
                
                 
             }else if(kospi.length !== 0){
@@ -155,7 +159,19 @@ function Table() {
                         )}
                             </>
                         ) : (
-                            ""
+                            <>
+                                {read.map((item, idx) => {
+                                    return (
+                                        <RankStyle
+                                            idx={idx + 1}
+                                            name={item["종목명"]}
+                                            riseNfall={item["등락가"]}
+                                            riseNfallPer={item["등락율"]}
+                                            close={item["종가"]}
+                                        />
+                                    );
+                                })}
+                            </>
                         )}
 
                       
@@ -170,7 +186,7 @@ function Table() {
                     <div className="rowsContainer">
                         {show ? (
                             <>
-                                {sortKosdak.map((item: any, idx: number) => {
+                                {sortKospi.map((item: any, idx: number) => {
                                     return (
                                         <RankStyle
                                             idx={idx + 1}
@@ -192,7 +208,7 @@ function Table() {
                             </>
                         ) : (
                             <>
-                                {read.map((item, idx) => {
+                                {daqread.map((item, idx) => {
                                     return (
                                         <RankStyle
                                             idx={idx + 1}
