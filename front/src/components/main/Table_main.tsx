@@ -146,7 +146,7 @@ function Table() {
                                     );
                                 })}
 
-{loading ? (
+                             {loading ? (
                             <>
                                 <ReactLoading type="bars" color="#D7FF38" />
                             </>
@@ -170,7 +170,7 @@ function Table() {
                     <div className="rowsContainer">
                         {show ? (
                             <>
-                                {sortKospi.map((item: any, idx: number) => {
+                                {sortKosdak.map((item: any, idx: number) => {
                                     return (
                                         <RankStyle
                                             idx={idx + 1}
