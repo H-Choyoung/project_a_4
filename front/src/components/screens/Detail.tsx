@@ -8,6 +8,7 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import Article from "./Article";
 import ArticleNew from "./ArticleNew";
+import Reccomm from "./Reccommend";
 
 export interface Item {
     description: string;
@@ -233,9 +234,10 @@ const Detail = () => {
                                         1년
                                     </button>
                                 </div>
-                                <div className="recommend">
+                                <Reccomm data={info.rate} />
+                                {/* <div className="recommend">
                                     <button>매수 적극 추천</button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         {/* 뉴스페이지 컨테이너 */}
