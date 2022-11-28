@@ -91,11 +91,13 @@ function Table() {
     };
     //3. 정렬된 배열 변수에 담기(리턴에서 사용)
     const sortKospi = sortData(getKospi);
-    let sortKosdak = sortData(getKosdaq);
+    let sortKosdak = sortData(getKosdaq);  
 
+
+   //버틑 클릭시 
     const onSubmit = (e: any) => {
-        e.preventDefault(); 
-
+        e.preventDefault();  
+        //초기화
         setdaqRead([])
         setRead([])
 
@@ -123,7 +125,9 @@ function Table() {
             console.log(kospi)
             // setKosdaqData(sortData(kosdak));
         }
-    };
+    }; 
+
+
 
    
 
@@ -186,7 +190,7 @@ function Table() {
                     <div className="rowsContainer">
                         {show ? (
                             <>
-                                {sortKospi.map((item: any, idx: number) => {
+                                {sortKosdak.map((item: any, idx: number) => {
                                     return (
                                         <RankStyle
                                             idx={idx + 1}
