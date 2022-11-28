@@ -96,7 +96,7 @@ function Table() {
         e.preventDefault();
 
         if (e.type === "submit") {
-            const kospi = sortKospi.filter((item) => {
+            const kospi = sortKospi.filter((item) => { 
                 return item["종목명"].includes(e.target[0].value);
             });
 
@@ -106,40 +106,22 @@ function Table() {
 
             if (kosdak.length !== 0) {
                 setShow(false);
-                setRead(kosdak);
+                setRead(kosdak);  
+               
+                
+            }else if(kospi.length !== 0){
+                setShow(false);
+                setRead(kospi);  
+            
             }
+                
+
+            console.log(kospi)
             // setKosdaqData(sortData(kosdak));
         }
     };
 
-    // function setDealTab(data: string) {
-    //     setpush(data);
-    //     console.log(getpush);
-
-    //     // navigate('/edit',{state: "귤먹으세욤"})
-
-    //     if (getpush === "pressed") {
-    //         //input 값이랑 companyname이랑 비교
-    //         let filter_kosdaq_Data: any = kosdaqname.filter((i: any) => {
-    //             // return i === data
-    //             return i.includes(txValue);
-    //         });
-
-    //         let filter_kospi_Data: any = kosipe.filter((i: any) => {
-    //             return i.includes(txValue);
-    //         });
-    //         settler(filter_kosdaq_Data);
-    //         settler(filter_kospi_Data);
-    //         console.log(filter_kosdaq_Data);
-    //         console.log(filter_kospi_Data);
-
-    //         // undifined
-    //         if (txValue.length === 0) {
-    //             filter_kosdaq_Data = [];
-    //             filter_kospi_Data = [];
-    //         }
-    //     }
-    // }
+   
 
     return (
         <div id="section">
@@ -163,18 +145,20 @@ function Table() {
                                         />
                                     );
                                 })}
-                            </>
-                        ) : (
-                            ""
-                        )}
 
-                        {loading ? (
+{loading ? (
                             <>
                                 <ReactLoading type="bars" color="#D7FF38" />
                             </>
                         ) : (
                             ""
                         )}
+                            </>
+                        ) : (
+                            ""
+                        )}
+
+                      
                         <div ref={(e: any) => setTarget(e)}></div>
                     </div>
                 </div>
@@ -196,7 +180,15 @@ function Table() {
                                             close={item["종가"]}
                                         />
                                     );
-                                })}
+                                })} 
+
+                            {loading ? (
+                            <>
+                                <ReactLoading type="bars" color="#D7FF38" />
+                            </>
+                        ) : (
+                            ""
+                        )}
                             </>
                         ) : (
                             <>
@@ -214,13 +206,7 @@ function Table() {
                             </>
                         )}
 
-                        {loading ? (
-                            <>
-                                <ReactLoading type="bars" color="#D7FF38" />
-                            </>
-                        ) : (
-                            ""
-                        )}
+                      
                         <div ref={(e: any) => setTarget(e)}></div>
                     </div>
                 </div>

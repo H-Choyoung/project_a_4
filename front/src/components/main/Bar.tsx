@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { off } from "process";
-import { render } from "@testing-library/react";
-import Table from "./Table_main";
+// import { off } from "process";
+// import { render } from "@testing-library/react";
+// import Table from "./Table_main";
 
 //db 끌고옴
 interface Ko {
@@ -23,7 +23,7 @@ const Bar = ({ onSubmit }: any) => {
     const [error, setError] = useState(null);
     const [tler, settler] = useState("");
 
-    const navigate = useNavigate();
+
     /* api 받는 함수 */
     const FetchDatas = async () => {
         try {
@@ -68,14 +68,12 @@ const Bar = ({ onSubmit }: any) => {
 
     //input에 누르면 값저장
 
-    //    const navigate = useNavigate();
+
 
     //💛 버튼이 누르면 input 값이랑 companyname이랑 비교
     function setDealTab(data: string) {
         setpush(data);
         console.log(getpush);
-
-        // navigate('/edit',{state: "귤먹으세욤"})
 
         if (getpush === "pressed") {
             //input 값이랑 companyname이랑 비교
