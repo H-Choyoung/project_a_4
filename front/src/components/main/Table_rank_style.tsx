@@ -76,7 +76,7 @@ const RankStyle = ({
         }
     });
 
-    console.log("ab");
+    // console.log("ab");
     return (
         <div
             className="rows"

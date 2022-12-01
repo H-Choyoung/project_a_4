@@ -85,14 +85,7 @@ function App() {
             // console.log(datas.data.sim.items)
         };
         getDatas();
-    }, []); 
-
-    const [searchName, getname] = useState("");
-    function setDealTab(data:any){ 
-        getname(data)
-        
-
-    }
+    }, []);
 
     // console.log(getName)
     return (
@@ -129,15 +122,14 @@ function App() {
                                 ) {
                                     // navigate(
                                     //     `/detail?market=${searchFilter[0].name}`
-                                    // ); 
-                                    // 그래프로 가게해줌 
-                                    // navigate(
-                                    //     `/detail?market=${searchFilter[0].market.toLowerCase()}&code=${
-                                    //         searchFilter[0].code
-                                    //     }&company=${
-                                    //         searchFilter[0].name
-                                    //     }&day=month`
                                     // );
+                                    navigate(
+                                        `/detail?market=${searchFilter[0].market.toLowerCase()}&code=${
+                                            searchFilter[0].code
+                                        }&company=${
+                                            searchFilter[0].name
+                                        }&day=month`
+                                    );
                                 }
                             }}
                         >
@@ -152,7 +144,7 @@ function App() {
                                     let data = e.target.value;
 
                                     setTitle(data);
-                                    // console.log(getName);
+                                    console.log(getName);
                                     let filterData = getName.filter(
                                         (i: any) => {
                                             return i.name.includes(data);
@@ -197,7 +189,7 @@ function App() {
                                     );
                                 })}
                             </div>
-                            <button onClick={() => setDealTab({title})}  className="inputButton">검색하기</button>
+                            <button  className="inputButton">검색하기</button>
                         </form>
                     </div>
                 </div>
@@ -210,7 +202,7 @@ function App() {
                     </div>
                     {/* 테이블영역 */}
                     <div className="tableArea">
-                        <Table test={searchName} />
+                        <Table test={title} />
                         {/* <p>테이블 삽입영역</p> */}
                     </div>
                 </div>

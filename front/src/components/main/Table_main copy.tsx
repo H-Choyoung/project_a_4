@@ -15,9 +15,7 @@ interface Ko {
 
 function Table(props: any) {  
 
-    const company = props.test?.title
-    console.log(props.test) 
-    console.log(typeof company)
+    console.log(props.test)
 
     const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(null);
@@ -43,52 +41,10 @@ function Table(props: any) {
         setKosdaqData((prev) => prev.concat(kosdaqRes.data));
         page++;
     };
-    const [show, setShow] = useState(true);
-    const [read, setRead] = useState<any>([]); 
-    const [daqread,setdaqRead] = useState<any>([]); 
-    useEffect(() => { 
-        
-            if(company){   
-                setdaqRead([])
-                setRead([])
-                
-                const kospi = sortKospi.filter((item) => {
-                    // console.log(item)
-                    // console.log(company)
-                    return item["종목명"].includes(company); 
-                    
-                });
-    
-                const kosdak = sortKosdak.filter((item) => {
-                    return item["종목명"].includes(company);
-                }); 
-                 
-            
-               console.log(kosdak,kospi)
-    
-                if(kosdak.length !== 0 && kospi.length !== 0) { 
 
-                    setShow(false);
-                    setdaqRead(kosdak);  
-                    setRead(kospi);  
-                } else if (kosdak.length !== 0) {
-                    console.log(kosdak[0]['종목명'],"안녕")
-                      setShow(false);
-                      setdaqRead(kosdak);  
-                   
-                    
-                }
-                 else if(kospi.length !== 0 ){
-                    setShow(false);
-                    console.log(kospi[0]['종목명'],"안녕")
-                     setRead(kospi);  
-                
-                }
-             
-            }
-    
-
-    }, [company]);
+    // useEffect(() => {
+    //   FetchData();
+    // }, []);
 
     /* 스크롤용 IntersectionObserver */
     //target변경이 감지될 시 useEffect실행
@@ -117,8 +73,7 @@ function Table(props: any) {
     /* market데이터 가져와서 우선 정렬하는 함수 */
     //1. 마켓 데이터 가져오기(sortData함수에 넣으면 안됨)
     const getKospi = kospiData.map<Ko>((item) => item[0]);
-    const getKosdaq = kosdaqData.map<Ko>((item) => item[0]); 
-    
+    const getKosdaq = kosdaqData.map<Ko>((item) => item[0]);
     //2. 가져온 데이터 정렬
     const sortData = (objs: any[]) => {
         let sort = objs.sort((a: any, b: any) => b["등락율"] - a["등락율"]);
@@ -131,12 +86,7 @@ function Table(props: any) {
 
     // const onClickHandler = (e:a) => {
     //     console.log("a");
-    // }; 
-
-
-
-
-    // onSubmit(company)
+    // };
 
     return (
         <div id="section">
@@ -145,13 +95,11 @@ function Table(props: any) {
                     <div className="marketName">
                         <h3>KOSPI</h3>
                     </div>
-                    <div className="rowsContainer"> 
-                    
-                    {show ? (
-                            <>
-                                {sortKospi.map((item: any, idx: number) => {
-                                    return (
-                                        <RankStyle
+                    <div className="rowsContainer">
+                        {sortKospi.map((item, idx) => {
+                            if(item["등락가"] !== 0){
+                                return (
+                                    <RankStyle
                                         key={idx}
                                         idx={idx + 1}
                                         name={item["종목명"]}
@@ -161,23 +109,18 @@ function Table(props: any) {
                                         market={item["market"]}
                                         code={item["code"]}
                                         // onClick={onClickHandler}
-                                        />
-                                    );
-                                })}
-
-                             {loading ? (
-                            <>
-                                <ReactLoading type="bars" color="#D7FF38" />
-                            </>
-                        ) : (
-                            ""
-                        )}
-                            </>
-                        ) : (
-                            <>
-                                {read.map((item:any, idx:any) => {
-                                    return (
-                                        <RankStyle
+                                    />
+                                );
+                            }
+                        })}
+                        {/* {sortKospi.filter(val => val["종목명"] === '삼성전자').map((item, idx) => { */}
+                        {/* {sortKospi.map((item, idx) => {
+                            return item;
+                        })
+                        .filter((item, idx) => { 
+                            item["종목명"] === '삼성전자';
+                                return (
+                                    <RankStyle
                                         key={idx}
                                         idx={idx + 1}
                                         name={item["종목명"]}
@@ -186,10 +129,17 @@ function Table(props: any) {
                                         close={item["종가"]}
                                         market={item["market"]}
                                         code={item["code"]}
-                                        />
-                                    );
-                                })}
+                                        // onClick={onClickHandler}
+                                    />
+                                );
+                        }) */}
+                        {/* } */}
+                        {loading ? (
+                            <>
+                                <ReactLoading type="bars" color="#D7FF38" />
                             </>
+                        ) : (
+                            ""
                         )}
                         <div ref={(e: any) => setTarget(e)}></div>
                     </div>
@@ -199,50 +149,29 @@ function Table(props: any) {
                         <h3>KOSDAQ</h3>
                     </div>
                     <div className="rowsContainer">
-                    {show ? (
-                            <>
-                                {sortKosdak.map((item: any, idx: number) => {
-                                    return (
-                                        <RankStyle
-                                        key={idx}
-                                        idx={idx + 1}
-                                        name={item["종목명"]}
-                                        riseNfall={item["등락가"]}
-                                        riseNfallPer={item["등락율"]}
-                                        close={item["종가"]}
-                                        market={item["market"]}
-                                        code={item["code"]}
-                                        />
-                                    );
-                                })} 
-
-                            {loading ? (
+                        {sortKosdak.map((item, idx) => {
+                            if(item["등락가"] !== 0){
+                            return (
+                                <RankStyle
+                                    key={idx}
+                                    idx={idx + 1}
+                                    name={item["종목명"]}
+                                    riseNfall={item["등락가"]}
+                                    riseNfallPer={item["등락율"]}
+                                    close={item["종가"]}
+                                    market={item["market"]}
+                                    code={item["code"]}
+                                />
+                            );
+                            }
+                        })}
+                        {loading ? (
                             <>
                                 <ReactLoading type="bars" color="#D7FF38" />
                             </>
                         ) : (
                             ""
                         )}
-                            </>
-                        ) : (
-                            <>
-                                {daqread.map((item:any, idx:any) => {
-                                    return (
-                                        <RankStyle
-                                        key={idx}
-                                        idx={idx + 1}
-                                        name={item["종목명"]}
-                                        riseNfall={item["등락가"]}
-                                        riseNfallPer={item["등락율"]}
-                                        close={item["종가"]}
-                                        market={item["market"]}
-                                        code={item["code"]}
-                                        />
-                                    );
-                                })}
-                            </>
-                        )}
-                        
                         {/* <div ref={(e:any) => setTarget(e)}></div>         */}
                     </div>
                 </div>
