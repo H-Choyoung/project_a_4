@@ -206,7 +206,8 @@ function App() {
                 <div className="tableContainer">
                     {/* 타이틀 */}
                     <div className="stockInfoTitle">
-                        <p>주식 거래량 순위</p>
+                        {/* <p>주식 거래량 순위</p> */}
+                        <p>주식 등락율 순위(22.02.03 기준)</p>
                     </div>
                     {/* 테이블영역 */}
                     <div className="tableArea">
