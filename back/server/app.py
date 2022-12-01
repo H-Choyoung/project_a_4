@@ -41,8 +41,7 @@ def get_kospi():
 def get_kosdaq():
   return table.kosdaq_data();
 
-
-
+#detail---------------------------------------------
 @app.route('/detail', methods=["GET"])
 def detailRoute():
     data = graph.get_graph()
