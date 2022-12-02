@@ -12,7 +12,6 @@ const Router = () => {
             <Route path="/" element={<App />} />
             {/* <Route path="/detail" element={<Detail />} />
                 <Route path="/test" element={<Test />} /> */}
-            {/* 여기부턴 용준님거 */}
             <Route path="/detail" element={<Detail />} />
         </Routes>
     );
