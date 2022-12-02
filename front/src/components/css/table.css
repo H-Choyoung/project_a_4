@@ -1,6 +1,6 @@
 body {
   -ms-overflow-style: none;
-  }
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -80,7 +80,7 @@ h3 {
   width: 96%;
   height: 73px;
   transition: 0.3s;
-  cursor: url("../../img/select.png")20 30, auto;
+  /* cursor: url("../../img/select.png")20 30, auto; */
 }
 .leftStr {
   width: 100%;
@@ -102,7 +102,7 @@ h3 {
   align-items: center;
   padding-right: 20px;
 }
-.rightStr :nth-child(-n+2) {
+.rightStr :nth-child(-n + 2) {
   padding-right: 5%;
 }
 /* .riseAndFall {
